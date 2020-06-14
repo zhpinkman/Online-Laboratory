@@ -7,4 +7,5 @@ public class Lab {
     private Address labAddress;
     private List<LabRepository> labRepositories;
     private List<LabTest> labTests;
+    private List<InsuranceCompany> supportedInsurances;
 }
