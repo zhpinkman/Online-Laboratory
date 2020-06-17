@@ -18,6 +18,6 @@ public class TestRequestRecord {
     }
     private double getEstimatedTimeToBeDone() { return 0; }
     private String getPhlebotomistInfo() { return phlebotomist.getInfo(); }
-    
+
 
 }
