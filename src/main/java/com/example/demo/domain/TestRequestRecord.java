@@ -1,5 +1,8 @@
 package com.example.demo.domain;
 
+import com.example.demo.domain.statusEnums.TestRequestPaymentStatus;
+import com.example.demo.domain.statusEnums.TestRequestRecordStatus;
+
 import java.util.Date;
 
 public class TestRequestRecord {

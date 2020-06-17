@@ -1,4 +1,4 @@
-package com.example.demo.domain;
+package com.example.demo.domain.statusEnums;
 
 public enum TestRequestRecordStatus {
     TEST_INITIATED,
