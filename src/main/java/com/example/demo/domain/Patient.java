@@ -7,5 +7,5 @@ public class Patient extends User {
     private int patientPriority;
     private String insuranceCode;
     private List<TestRequestRecord> testRequestRecordList;
-
+    private List<Prescription> prescriptions;
 }
