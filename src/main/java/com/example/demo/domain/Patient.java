@@ -3,7 +3,7 @@ package com.example.demo.domain;
 import java.util.List;
 
 public class Patient extends User {
-    private Address address;
+    private List<Address> addresses;
     private int patientPriority;
     private String insuranceCode;
     private List<TestRequestRecord> testRequestRecordList;
@@ -12,5 +12,9 @@ public class Patient extends User {
 
     public List<Prescription> getPrescriptions() {
         return prescriptions;
+    }
+
+    public List<Address> getAddresses() {
+        return addresses;
     }
 }

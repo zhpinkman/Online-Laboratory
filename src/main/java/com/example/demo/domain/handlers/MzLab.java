@@ -1,5 +1,6 @@
 package com.example.demo.domain.handlers;
 
+import com.example.demo.domain.Address;
 import com.example.demo.domain.Patient;
 import com.example.demo.domain.Prescription;
 import com.example.demo.domain.TestDesc;
@@ -24,14 +25,11 @@ public class MzLab {
     }
 
     public List<Prescription> getReviewedPrescriptions(Patient patient) {
-        List<Prescription> patientPrescriptions = patient.getPrescriptions();
-        List<Prescription> reviewedOnes = new ArrayList<>();
-        for (Prescription prescription: patientPrescriptions) {
-            if (prescription.getPrescriptionStatus().equals(PrescriptionStatus.REVIEWED)) {
-                reviewedOnes.add(prescription);
-            }
-        }
-        return reviewedOnes;
+        return patientHandler.getReviewedPrescritions(patient);
+    }
+
+    public List<Address> getPatientAddresses(Patient patient) {
+        return patientHandler.getPatientAddresses(patient);
     }
 
 }
