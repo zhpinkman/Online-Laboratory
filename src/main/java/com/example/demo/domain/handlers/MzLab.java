@@ -32,4 +32,8 @@ public class MzLab {
         return patientHandler.getPatientAddresses(patient);
     }
 
+    public void setTestRecordRequestAddress(Patient patient, Address address) {
+
+    }
+
 }

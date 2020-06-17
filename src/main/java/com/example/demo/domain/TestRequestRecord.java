@@ -11,16 +11,19 @@ public class TestRequestRecord {
     private String testFollowUpCode;
     private Date phlebotomistReferDate;
     private TestRequestPaymentStatus testRequestPaymentStatus;
+    private Address address;
     private boolean insuranceRequest;
 
 
 
 
-    private double getTotalPrice() {
+    public double getTotalPrice() {
         return 0;
     }
-    private double getEstimatedTimeToBeDone() { return 0; }
-    private String getPhlebotomistInfo() { return phlebotomist.getInfo(); }
+    public double getEstimatedTimeToBeDone() { return 0; }
+    public String getPhlebotomistInfo() { return phlebotomist.getInfo(); }
 
-
+    public void setAddress(Address address) {
+        this.address = address;
+    }
 }

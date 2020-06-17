@@ -8,6 +8,7 @@ public class Patient extends User {
     private String insuranceCode;
     private List<TestRequestRecord> testRequestRecordList;
     private List<Prescription> prescriptions;
+    private TestRequestRecord currentTestRequestRecord;
 
 
     public List<Prescription> getPrescriptions() {
