@@ -54,9 +54,10 @@ public class PatientHandler {
         patient.attachPrescriptionToTest(prescriptionId);
     }
 
-    public void verifyPatientTestRequest(String patientEmail) throws Exception {
+    public TestRequestRecord verifyPatientTestRequest(String patientEmail) throws Exception {
         Patient patient = getPatient(patientEmail);
         TestRequestRecord testRequestRecord = patient.getCurrentTestRequestRecord();
         testRequestRecord.verifyCorrectness();
+        return testRequestRecord;
     }
 }

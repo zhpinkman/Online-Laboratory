@@ -1,9 +1,6 @@
 package com.example.demo.domain.handlers;
 
-import com.example.demo.domain.Address;
-import com.example.demo.domain.Patient;
-import com.example.demo.domain.Prescription;
-import com.example.demo.domain.TestDesc;
+import com.example.demo.domain.*;
 import com.example.demo.domain.handlers.LabHandler;
 import com.example.demo.domain.handlers.PatientHandler;
 import com.example.demo.domain.statusEnums.PrescriptionStatus;
@@ -56,8 +53,13 @@ public class MzLab {
         patientHandler.attachPrescriptionToTest(patientEmail, prescriptionId);
     }
 
-    public void verifyPatientTestRequest(String patientEmail) throws Exception {
-        patientHandler.verifyPatientTestRequest(patientEmail);
+    public List<Lab> verifyPatientTestRequest(String patientEmail) throws Exception {
+        TestRequestRecord testRequestRecord = patientHandler.verifyPatientTestRequest(patientEmail);
+        return getLabsWithFullSupport(testRequestRecord);
+    }
+
+    public List<Lab> getLabsWithFullSupport(TestRequestRecord testRequestRecord) {
+        return labHandler.getLabsWithFullSupport(testRequestRecord);
     }
 
 }

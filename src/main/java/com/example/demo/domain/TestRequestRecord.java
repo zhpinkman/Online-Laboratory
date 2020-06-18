@@ -22,6 +22,10 @@ public class TestRequestRecord {
         return address;
     }
 
+    public List<TestDesc> getTestDescList() {
+        return testDescList;
+    }
+
     public double getTotalPrice() {
         return 0;
     }
