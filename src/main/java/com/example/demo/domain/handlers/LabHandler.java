@@ -1,6 +1,7 @@
 package com.example.demo.domain.handlers;
 
 import com.example.demo.domain.Lab;
+import com.example.demo.domain.LabTest;
 import com.example.demo.domain.TestRequestRecord;
 
 import java.util.ArrayList;
@@ -27,5 +28,10 @@ public class LabHandler {
             }
         }
         return labsWithFullSupport;
+    }
+
+    public List<LabTest> getLabTests(String labName, TestRequestRecord testRequestRecord) throws Exception {
+        Lab lab = getLab(labName);
+        return lab.getLabTests(testRequestRecord.getTestDescList());
     }
 }

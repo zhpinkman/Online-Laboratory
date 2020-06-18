@@ -61,8 +61,9 @@ public class PatientHandler {
         return testRequestRecord;
     }
 
-    public void setSelectedLabForTests(String patientEmail, Lab selectedLab) throws Exception {
+    public TestRequestRecord setSelectedLabForTests(String patientEmail, Lab selectedLab) throws Exception {
         Patient patient = getPatient(patientEmail);
         patient.setSelectedLabForTests(selectedLab);
+        return patient.getCurrentTestRequestRecord();
     }
 }

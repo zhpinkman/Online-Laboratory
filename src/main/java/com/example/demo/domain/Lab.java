@@ -1,5 +1,6 @@
 package com.example.demo.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Lab {
@@ -29,5 +30,19 @@ public class Lab {
 
     public boolean namesMatches(String labName) {
         return name.equals(labName);
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public List<LabTest> getLabTests(List<TestDesc> testDescList) {
+        List<LabTest> labTestList = new ArrayList<>();
+        for (LabTest labTest: labTests) {
+            if (labTest.isIncluded(testDescList)) {
+                labTestList.add(labTest);
+            }
+        }
+        return labTestList;
     }
 }

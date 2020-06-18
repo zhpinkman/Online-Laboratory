@@ -62,9 +62,14 @@ public class MzLab {
         return labHandler.getLabsWithFullSupport(testRequestRecord);
     }
 
-    public void setSelectedLabForTests(String patientEmail, String labName) throws Exception {
+    public FullTestInfo setSelectedLabForTests(String patientEmail, String labName) throws Exception {
+        FullTestInfo fullTestInfo = new FullTestInfo();
         Lab selectedLab = labHandler.getLab(labName);
-        patientHandler.setSelectedLabForTests(patientEmail, selectedLab);
+        fullTestInfo.setLabName(selectedLab.getName());
+        TestRequestRecord testRequestRecord = patientHandler.setSelectedLabForTests(patientEmail, selectedLab);
+        List<LabTest> labTestList = labHandler.getLabTests(labName, testRequestRecord);
+        fullTestInfo.setLabTestList(labTestList);
+        return fullTestInfo;
     }
 
 }
