@@ -62,4 +62,9 @@ public class MzLab {
         return labHandler.getLabsWithFullSupport(testRequestRecord);
     }
 
+    public void setSelectedLabForTests(String patientEmail, String labName) throws Exception {
+        Lab selectedLab = labHandler.getLab(labName);
+        patientHandler.setSelectedLabForTests(patientEmail, selectedLab);
+    }
+
 }

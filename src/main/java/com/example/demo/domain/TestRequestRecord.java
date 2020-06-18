@@ -16,7 +16,12 @@ public class TestRequestRecord {
 //    private boolean insuranceRequest; todo not sure about usage of this one
     private List<TestDesc> testDescList;
     private Prescription attachedPrescription;
+    private Lab selectedLab;
 
+
+    public void setSelectedLab(Lab selectedLab) {
+        this.selectedLab = selectedLab;
+    }
 
     public Address getAddress() {
         return address;

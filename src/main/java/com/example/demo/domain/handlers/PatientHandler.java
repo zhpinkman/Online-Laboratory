@@ -60,4 +60,9 @@ public class PatientHandler {
         testRequestRecord.verifyCorrectness();
         return testRequestRecord;
     }
+
+    public void setSelectedLabForTests(String patientEmail, Lab selectedLab) throws Exception {
+        Patient patient = getPatient(patientEmail);
+        patient.setSelectedLabForTests(selectedLab);
+    }
 }

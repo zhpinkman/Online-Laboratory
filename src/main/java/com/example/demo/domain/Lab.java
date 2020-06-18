@@ -26,4 +26,8 @@ public class Lab {
         }
         return false;
     }
+
+    public boolean namesMatches(String labName) {
+        return name.equals(labName);
+    }
 }
