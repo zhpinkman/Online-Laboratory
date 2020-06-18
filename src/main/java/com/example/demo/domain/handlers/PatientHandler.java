@@ -3,6 +3,8 @@ package com.example.demo.domain.handlers;
 import com.example.demo.domain.Address;
 import com.example.demo.domain.Patient;
 import com.example.demo.domain.Prescription;
+import com.example.demo.domain.TestDesc;
+import com.example.demo.domain.externalAPIs.InsuranceAPI;
 import com.example.demo.domain.statusEnums.PrescriptionStatus;
 
 import javax.swing.*;
@@ -43,5 +45,10 @@ public class PatientHandler {
     public void setTestRecordRequestAddress(String patientEmail, Address address) {
         Patient patient = getPatient(patientEmail);
         patient.setTestRecordRequestAddress(address);
+    }
+
+    public void setPatientsTest(String patientEmail, List<TestDesc> testDescs) {
+        Patient patient = getPatient(patientEmail);
+        patient.setTests(testDescs);
     }
 }

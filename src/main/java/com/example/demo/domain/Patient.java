@@ -22,4 +22,8 @@ public class Patient extends User {
     public void setTestRecordRequestAddress(Address address) {
         currentTestRequestRecord.setAddress(address);
     }
+
+    public void setTests(List<TestDesc> testDescs) {
+        currentTestRequestRecord.setTestDescList(testDescs);
+    }
 }

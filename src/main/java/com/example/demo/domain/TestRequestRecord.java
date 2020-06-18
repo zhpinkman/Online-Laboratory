@@ -4,6 +4,7 @@ import com.example.demo.domain.statusEnums.TestRequestPaymentStatus;
 import com.example.demo.domain.statusEnums.TestRequestRecordStatus;
 
 import java.util.Date;
+import java.util.List;
 
 public class TestRequestRecord {
     private TestRequestRecordStatus testRequestRecordStatus;
@@ -13,6 +14,7 @@ public class TestRequestRecord {
     private TestRequestPaymentStatus testRequestPaymentStatus;
     private Address address;
     private boolean insuranceRequest;
+    private List<TestDesc> testDescList;
 
 
 
@@ -25,5 +27,9 @@ public class TestRequestRecord {
 
     public void setAddress(Address address) {
         this.address = address;
+    }
+
+    public void setTestDescList(List<TestDesc> testDescList) {
+        this.testDescList = testDescList;
     }
 }

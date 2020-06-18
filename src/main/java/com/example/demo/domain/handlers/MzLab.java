@@ -17,13 +17,17 @@ public class MzLab {
 
     private PatientHandler patientHandler = new PatientHandler();
     private LabHandler labHandler = new LabHandler();
-    
+
     public List<TestDesc> getAllTests() {
         return testDescs;
     }
 
     public List<Prescription> getReviewedPrescriptions(String patientEmail) {
         return patientHandler.getReviewedPrescritions(patientEmail);
+    }
+
+    public void setPatientTests(String patientEmail, List<TestDesc> testDescs) {
+        patientHandler.setPatientsTest(patientEmail, testDescs);
     }
 
     public List<Address> getPatientAddresses(String patientEmail) {
