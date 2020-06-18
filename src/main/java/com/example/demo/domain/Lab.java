@@ -45,4 +45,22 @@ public class Lab {
         }
         return labTestList;
     }
+
+    public boolean supportInsurance(String insuranceCompanyName) {
+        for (InsuranceCompany insuranceCompany: supportedInsurances) {
+            if (insuranceCompany.namesMatches(insuranceCompanyName)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public double getTestPrice(TestDesc testDesc) throws Exception {
+        for (LabTest labTest: labTests) {
+            if (labTest.matches(testDesc)) {
+                return labTest.getPrice();
+            }
+        }
+        throw new Exception("lab test not found");
+    }
 }

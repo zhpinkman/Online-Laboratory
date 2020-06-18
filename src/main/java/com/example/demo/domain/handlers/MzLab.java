@@ -77,4 +77,11 @@ public class MzLab {
         TestRequestRecord testRequestRecord = patientHandler.confirmTestRequest(patientEmail);
         return labHandler.findRecommendedTimes(testRequestRecord);
     }
+
+
+    public double selectTimeForTest(String patientEmail, Date date) throws Exception { // it should return the amount patient should pay
+        TestRequestRecord testRequestRecord = patientHandler.setTimeForTest(patientEmail, date);
+        labHandler.assignPhlebotomistToTest(testRequestRecord);
+        return patientHandler.getTotalPrice(patientEmail);
+    }
 }

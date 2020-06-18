@@ -2,16 +2,26 @@ package com.example.demo.domain;
 
 import com.example.demo.domain.statusEnums.PrescriptionStatus;
 
+import java.util.Date;
 import java.util.List;
 
 public class Patient extends User {
     private List<Address> addresses;
     private int patientPriority;
     private String insuranceCode;
+    private String insuranceCompany;
     private List<TestRequestRecord> testRequestRecordList;
     private List<Prescription> prescriptions;
     private TestRequestRecord currentTestRequestRecord;
 
+
+    public String getInsuranceCode() {
+        return insuranceCode;
+    }
+
+    public String getInsuranceCompany() {
+        return insuranceCompany;
+    }
 
     public List<Prescription> getPrescriptions() {
         return prescriptions;
@@ -50,6 +60,11 @@ public class Patient extends User {
 
     public TestRequestRecord confirmTestRequest() {
         currentTestRequestRecord.confirmRequest();
+        return currentTestRequestRecord;
+    }
+
+    public TestRequestRecord setTimeForTest(Date date) {
+        currentTestRequestRecord.setPhlebotomistReferDate(date);
         return currentTestRequestRecord;
     }
 }

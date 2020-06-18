@@ -18,4 +18,8 @@ public class LabTest {
         }
         return false;
     }
+
+    public double getPrice() {
+        return price;
+    }
 }

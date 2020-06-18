@@ -15,4 +15,8 @@ public class TestDesc {
     public boolean needsInsurance() {
         return !withoutPrescriptionSupport;
     }
+
+    public boolean getInsuranceSupport() {
+        return insuranceSupport;
+    }
 }

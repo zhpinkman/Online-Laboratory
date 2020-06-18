@@ -6,6 +6,7 @@ import com.example.demo.domain.statusEnums.PrescriptionStatus;
 
 import javax.swing.*;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class PatientHandler {
@@ -70,5 +71,17 @@ public class PatientHandler {
     public TestRequestRecord confirmTestRequest(String patientEmail) throws Exception {
         Patient patient = getPatient(patientEmail);
         return patient.confirmTestRequest();
+    }
+
+    public TestRequestRecord setTimeForTest(String patientEmail, Date date) throws Exception {
+        Patient patient = getPatient(patientEmail);
+        return patient.setTimeForTest(date);
+    }
+
+    public double getTotalPrice(String patientEmail) throws Exception {
+        Patient patient = getPatient(patientEmail);
+        boolean insuranceVerified = InsuranceAPI.verifyCode(patient.getInsuranceCode());
+        TestRequestRecord testRequestRecord = patient.getCurrentTestRequestRecord();
+        return testRequestRecord.getTotalPrice(insuranceVerified, patient.getInsuranceCompany());
     }
 }

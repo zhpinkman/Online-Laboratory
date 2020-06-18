@@ -37,6 +37,10 @@ public class LabHandler {
     }
 
     public List<Date> findRecommendedTimes(TestRequestRecord testRequestRecord) {
-        return null;
+        return null; // todo
+    }
+
+    public void assignPhlebotomistToTest(TestRequestRecord testRequestRecord) {
+        return; // todo
     }
 }

@@ -1,5 +1,6 @@
 package com.example.demo.domain;
 
+import com.example.demo.domain.externalAPIs.InsuranceAPI;
 import com.example.demo.domain.statusEnums.TestRequestPaymentStatus;
 import com.example.demo.domain.statusEnums.TestRequestRecordStatus;
 
@@ -36,9 +37,20 @@ public class TestRequestRecord {
         return testDescList;
     }
 
-    public double getTotalPrice() {
-        return 0;
+    public double getTotalPrice(boolean insuranceVerified, String insuranceCompany) throws Exception {
+        double totalPrice = 0;
+        for (TestDesc testDesc: testDescList) {
+            if (insuranceVerified && selectedLab.supportInsurance(insuranceCompany) && testDesc.getInsuranceSupport()) {
+                int reductionFactor = InsuranceAPI.getInsuranceCompanyRedcutionFactor(insuranceCompany);
+                double rawPrice = selectedLab.getTestPrice(testDesc);
+                totalPrice += rawPrice*reductionFactor;
+            }
+        }
+        testRequestRecordStatus = TestRequestRecordStatus.WAITING_FOR_PAYMENT;
+        return totalPrice;
     }
+
+
     public double getEstimatedTimeToBeDone() { return 0; }
     public String getPhlebotomistInfo() { return phlebotomist.getInfo(); }
 
@@ -73,5 +85,10 @@ public class TestRequestRecord {
 
     public Lab getSelectedLab() {
         return selectedLab;
+    }
+
+    public void setPhlebotomistReferDate(Date phlebotomistReferDate) {
+        this.phlebotomistReferDate = phlebotomistReferDate;
+        testRequestRecordStatus = TestRequestRecordStatus.TIME_SELECTED;
     }
 }
