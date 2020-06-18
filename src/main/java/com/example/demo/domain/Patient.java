@@ -26,4 +26,13 @@ public class Patient extends User {
     public void setTests(List<TestDesc> testDescs) {
         currentTestRequestRecord.setTestDescList(testDescs);
     }
+
+    public void attachPrescriptionToTest(String prescriptionId) throws Exception {
+        for (Prescription prescription: prescriptions) {
+            if (prescription.idMatches(prescriptionId)) {
+                currentTestRequestRecord.attachPrescription(prescription);
+            }
+        }
+        throw new Exception("invalid prescription");
+    }
 }

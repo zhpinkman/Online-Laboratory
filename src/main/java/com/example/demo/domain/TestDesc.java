@@ -7,4 +7,8 @@ public class TestDesc {
     private boolean insuranceSupport;
     private String preTestChecks;
     private String testChecks;
+
+    public boolean matches(TestDesc testDesc1) {
+        return testDesc1.testName.equals(testName);
+    }
 }

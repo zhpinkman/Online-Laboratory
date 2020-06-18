@@ -22,20 +22,38 @@ public class MzLab {
         return testDescs;
     }
 
-    public List<Prescription> getReviewedPrescriptions(String patientEmail) {
+    private boolean testExists(TestDesc testDesc) {
+        for (TestDesc testDesc1: testDescs) {
+            if (testDesc.matches(testDesc1)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public List<Prescription> getReviewedPrescriptions(String patientEmail) throws Exception {
         return patientHandler.getReviewedPrescritions(patientEmail);
     }
 
-    public void setPatientTests(String patientEmail, List<TestDesc> testDescs) {
+    public void setPatientTests(String patientEmail, List<TestDesc> testDescs) throws Exception {
+        for (TestDesc testDesc: testDescs) {
+            if (!testExists(testDesc)) {
+                throw new Exception("test not available");
+            }
+        }
         patientHandler.setPatientsTest(patientEmail, testDescs);
     }
 
-    public List<Address> getPatientAddresses(String patientEmail) {
+    public List<Address> getPatientAddresses(String patientEmail) throws Exception {
         return patientHandler.getPatientAddresses(patientEmail);
     }
 
-    public void setTestRecordRequestAddress(String patientEmail, Address address) {
+    public void setTestRequestRecordAddress(String patientEmail, Address address) throws Exception {
         patientHandler.setTestRecordRequestAddress(patientEmail, address);
+    }
+
+    public void attachPrescriptionToTest(String patientEmail, String prescriptionId) throws Exception {
+        patientHandler.attachPrescriptionToTest(patientEmail, prescriptionId);
     }
 
 }

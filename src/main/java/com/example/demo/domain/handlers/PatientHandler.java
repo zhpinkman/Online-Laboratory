@@ -16,16 +16,16 @@ public class PatientHandler {
     private List<Patient> patientList;
 
 
-    private Patient getPatient(String patientEmail) {
+    private Patient getPatient(String patientEmail) throws Exception {
         for (Patient patient: patientList) {
             if (patient.emailsMatch(patientEmail)) {
                 return patient;
             }
         }
-        return null;
+        throw new Exception("user not available");
     }
 
-    public List<Prescription> getReviewedPrescritions(String patientEmail) {
+    public List<Prescription> getReviewedPrescritions(String patientEmail) throws Exception {
         Patient patient = getPatient(patientEmail);
         List<Prescription> patientPrescriptions = patient.getPrescriptions();
         List<Prescription> reviewedOnes = new ArrayList<>();
@@ -37,18 +37,24 @@ public class PatientHandler {
         return reviewedOnes;
     }
 
-    public List<Address> getPatientAddresses(String patientEmail) {
+    public List<Address> getPatientAddresses(String patientEmail) throws Exception {
         Patient patient = getPatient(patientEmail);
         return patient.getAddresses();
     }
 
-    public void setTestRecordRequestAddress(String patientEmail, Address address) {
+    public void setTestRecordRequestAddress(String patientEmail, Address address) throws Exception {
         Patient patient = getPatient(patientEmail);
         patient.setTestRecordRequestAddress(address);
     }
 
-    public void setPatientsTest(String patientEmail, List<TestDesc> testDescs) {
+    public void setPatientsTest(String patientEmail, List<TestDesc> testDescs) throws Exception {
         Patient patient = getPatient(patientEmail);
         patient.setTests(testDescs);
+    }
+
+    public void attachPrescriptionToTest(String patientEmail, String prescriptionId) throws Exception {
+        Patient patient = getPatient(patientEmail);
+        patient.attachPrescriptionToTest(prescriptionId);
+
     }
 }

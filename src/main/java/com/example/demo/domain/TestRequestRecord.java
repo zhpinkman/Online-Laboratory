@@ -15,6 +15,7 @@ public class TestRequestRecord {
     private Address address;
     private boolean insuranceRequest;
     private List<TestDesc> testDescList;
+    private Prescription attachedPriscription;
 
 
 
@@ -31,5 +32,9 @@ public class TestRequestRecord {
 
     public void setTestDescList(List<TestDesc> testDescList) {
         this.testDescList = testDescList;
+    }
+
+    public void attachPrescription(Prescription prescription) {
+        attachedPriscription = prescription;
     }
 }
