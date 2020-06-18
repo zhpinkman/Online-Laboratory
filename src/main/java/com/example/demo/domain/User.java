@@ -5,4 +5,9 @@ public class User {
     private String username;
     private String userEmail;
     private String password;
+
+
+    public boolean emailsMatch(String patientEmail) {
+        return userEmail.equals(patientEmail);
+    }
 }

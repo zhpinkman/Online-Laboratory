@@ -24,16 +24,16 @@ public class MzLab {
         return testDescs;
     }
 
-    public List<Prescription> getReviewedPrescriptions(Patient patient) {
-        return patientHandler.getReviewedPrescritions(patient);
+    public List<Prescription> getReviewedPrescriptions(String patientEmail) {
+        return patientHandler.getReviewedPrescritions(patientEmail);
     }
 
-    public List<Address> getPatientAddresses(Patient patient) {
-        return patientHandler.getPatientAddresses(patient);
+    public List<Address> getPatientAddresses(String patientEmail) {
+        return patientHandler.getPatientAddresses(patientEmail);
     }
 
-    public void setTestRecordRequestAddress(Patient patient, Address address) {
-
+    public void setTestRecordRequestAddress(String patientEmail, Address address) {
+        patientHandler.setTestRecordRequestAddress(patientEmail, address);
     }
 
 }

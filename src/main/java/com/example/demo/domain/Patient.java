@@ -18,4 +18,8 @@ public class Patient extends User {
     public List<Address> getAddresses() {
         return addresses;
     }
+
+    public void setTestRecordRequestAddress(Address address) {
+        currentTestRequestRecord.setAddress(address);
+    }
 }
