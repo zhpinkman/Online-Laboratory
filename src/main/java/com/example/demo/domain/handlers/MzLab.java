@@ -17,9 +17,7 @@ public class MzLab {
 
     private PatientHandler patientHandler = new PatientHandler();
     private LabHandler labHandler = new LabHandler();
-
-
-
+    
     public List<TestDesc> getAllTests() {
         return testDescs;
     }
