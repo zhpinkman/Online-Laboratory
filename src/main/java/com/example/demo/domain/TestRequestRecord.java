@@ -18,9 +18,14 @@ public class TestRequestRecord {
     private Prescription attachedPrescription;
     private Lab selectedLab;
 
+    TestRequestRecord() {
+        testRequestRecordStatus = TestRequestRecordStatus.TEST_INITIATED;
+    }
+
 
     public void setSelectedLab(Lab selectedLab) {
         this.selectedLab = selectedLab;
+        testRequestRecordStatus = TestRequestRecordStatus.WAITING_TO_BE_CONFIRMED;
     }
 
     public Address getAddress() {
@@ -60,5 +65,13 @@ public class TestRequestRecord {
                 }
             }
         }
+    }
+
+    public void confirmRequest() {
+        testRequestRecordStatus = TestRequestRecordStatus.CONFIRMED;
+    }
+
+    public Lab getSelectedLab() {
+        return selectedLab;
     }
 }

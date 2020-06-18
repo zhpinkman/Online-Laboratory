@@ -6,6 +6,7 @@ import com.example.demo.domain.handlers.PatientHandler;
 import com.example.demo.domain.statusEnums.PrescriptionStatus;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class MzLab {
@@ -72,4 +73,8 @@ public class MzLab {
         return fullTestInfo;
     }
 
+    public List<Date> confirmTestInfo(String patientEmail) throws Exception {
+        TestRequestRecord testRequestRecord = patientHandler.confirmTestRequest(patientEmail);
+        return labHandler.findRecommendedTimes(testRequestRecord);
+    }
 }

@@ -5,6 +5,7 @@ import com.example.demo.domain.LabTest;
 import com.example.demo.domain.TestRequestRecord;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class LabHandler {
@@ -33,5 +34,9 @@ public class LabHandler {
     public List<LabTest> getLabTests(String labName, TestRequestRecord testRequestRecord) throws Exception {
         Lab lab = getLab(labName);
         return lab.getLabTests(testRequestRecord.getTestDescList());
+    }
+
+    public List<Date> findRecommendedTimes(TestRequestRecord testRequestRecord) {
+        return null;
     }
 }

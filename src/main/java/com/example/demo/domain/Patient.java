@@ -47,4 +47,9 @@ public class Patient extends User {
     public void setSelectedLabForTests(Lab selectedLab) {
         currentTestRequestRecord.setSelectedLab(selectedLab);
     }
+
+    public TestRequestRecord confirmTestRequest() {
+        currentTestRequestRecord.confirmRequest();
+        return currentTestRequestRecord;
+    }
 }
