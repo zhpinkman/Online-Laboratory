@@ -38,7 +38,7 @@ public class MzLab {
     public void setPatientTests(String patientEmail, List<TestDesc> testDescs) throws Exception {
         for (TestDesc testDesc: testDescs) {
             if (!testExists(testDesc)) {
-                throw new Exception("test not available");
+                throw new Exception("Test not available");
             }
         }
         patientHandler.setPatientsTest(patientEmail, testDescs);
@@ -54,6 +54,10 @@ public class MzLab {
 
     public void attachPrescriptionToTest(String patientEmail, String prescriptionId) throws Exception {
         patientHandler.attachPrescriptionToTest(patientEmail, prescriptionId);
+    }
+
+    public void verifyPatientTestRequest(String patientEmail) throws Exception {
+        patientHandler.verifyPatientTestRequest(patientEmail);
     }
 
 }

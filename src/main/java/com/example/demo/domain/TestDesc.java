@@ -11,4 +11,8 @@ public class TestDesc {
     public boolean matches(TestDesc testDesc1) {
         return testDesc1.testName.equals(testName);
     }
+
+    public boolean needsInsurance() {
+        return !withoutPrescriptionSupport;
+    }
 }

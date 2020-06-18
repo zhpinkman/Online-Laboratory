@@ -18,4 +18,13 @@ public class Prescription {
     public boolean idMatches(String prescriptionId) {
         return prescriptionId.equals(id);
     }
+
+    public boolean prescriptionIncludes(TestDesc testDesc) {
+        for (TestDesc testDesc1: testDescs) {
+            if (testDesc.matches(testDesc1)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

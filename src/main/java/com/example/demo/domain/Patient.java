@@ -1,5 +1,7 @@
 package com.example.demo.domain;
 
+import com.example.demo.domain.statusEnums.PrescriptionStatus;
+
 import java.util.List;
 
 public class Patient extends User {
@@ -29,10 +31,16 @@ public class Patient extends User {
 
     public void attachPrescriptionToTest(String prescriptionId) throws Exception {
         for (Prescription prescription: prescriptions) {
-            if (prescription.idMatches(prescriptionId)) {
+            if (prescription.idMatches(prescriptionId) &&
+                    prescription.getPrescriptionStatus().equals(PrescriptionStatus.REVIEWED)) {
                 currentTestRequestRecord.attachPrescription(prescription);
             }
         }
         throw new Exception("invalid prescription");
+    }
+
+
+    public TestRequestRecord getCurrentTestRequestRecord() {
+        return currentTestRequestRecord;
     }
 }

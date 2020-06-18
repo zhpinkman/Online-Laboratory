@@ -1,9 +1,6 @@
 package com.example.demo.domain.handlers;
 
-import com.example.demo.domain.Address;
-import com.example.demo.domain.Patient;
-import com.example.demo.domain.Prescription;
-import com.example.demo.domain.TestDesc;
+import com.example.demo.domain.*;
 import com.example.demo.domain.externalAPIs.InsuranceAPI;
 import com.example.demo.domain.statusEnums.PrescriptionStatus;
 
@@ -55,6 +52,11 @@ public class PatientHandler {
     public void attachPrescriptionToTest(String patientEmail, String prescriptionId) throws Exception {
         Patient patient = getPatient(patientEmail);
         patient.attachPrescriptionToTest(prescriptionId);
+    }
 
+    public void verifyPatientTestRequest(String patientEmail) throws Exception {
+        Patient patient = getPatient(patientEmail);
+        TestRequestRecord testRequestRecord = patient.getCurrentTestRequestRecord();
+        testRequestRecord.verifyCorrectness();
     }
 }

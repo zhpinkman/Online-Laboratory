@@ -13,12 +13,14 @@ public class TestRequestRecord {
     private Date phlebotomistReferDate;
     private TestRequestPaymentStatus testRequestPaymentStatus;
     private Address address;
-    private boolean insuranceRequest;
+//    private boolean insuranceRequest; todo not sure about usage of this one
     private List<TestDesc> testDescList;
-    private Prescription attachedPriscription;
+    private Prescription attachedPrescription;
 
 
-
+    public Address getAddress() {
+        return address;
+    }
 
     public double getTotalPrice() {
         return 0;
@@ -35,6 +37,19 @@ public class TestRequestRecord {
     }
 
     public void attachPrescription(Prescription prescription) {
-        attachedPriscription = prescription;
+        attachedPrescription = prescription;
+    }
+
+    public void verifyCorrectness() throws Exception {
+        if (address == null) {
+            throw new Exception("address is null");
+        }
+        for (TestDesc testDesc: testDescList) {
+            if (testDesc.needsInsurance()) {
+                if (!attachedPrescription.prescriptionIncludes(testDesc)) {
+                    throw new Exception("test needs prescription but not attached");
+                }
+            }
+        }
     }
 }
