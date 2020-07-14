@@ -1,6 +1,7 @@
 package com.example.demo.domain.handlers;
 
 import com.example.demo.domain.*;
+import com.example.demo.domain.externalAPIs.BankAPI;
 import com.example.demo.domain.externalAPIs.InsuranceAPI;
 import com.example.demo.domain.statusEnums.PrescriptionStatus;
 
@@ -83,5 +84,12 @@ public class PatientHandler {
         boolean insuranceVerified = InsuranceAPI.verifyCode(patient.getInsuranceCode());
         TestRequestRecord testRequestRecord = patient.getCurrentTestRequestRecord();
         return testRequestRecord.getTotalPrice(insuranceVerified, patient.getInsuranceCompany());
+    }
+
+    public void confirmPaymentReceipt(String patientEmail) throws Exception {
+        Patient patient = getPatient(patientEmail);
+        double amountToPay = getTotalPrice(patientEmail);
+        PaymentReceipt paymentReceipt = new PaymentReceipt(amountToPay);
+        BankAPI.verifyPayment(paymentReceipt);
     }
 }

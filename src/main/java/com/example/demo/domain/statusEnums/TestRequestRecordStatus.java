@@ -7,5 +7,6 @@ public enum TestRequestRecordStatus {
     WAITING_TO_BE_CONFIRMED,
     CONFIRMED,
     TIME_SELECTED,
-    WAITING_FOR_PAYMENT
+    WAITING_FOR_PAYMENT,
+    PAYMENT_DONE
 }

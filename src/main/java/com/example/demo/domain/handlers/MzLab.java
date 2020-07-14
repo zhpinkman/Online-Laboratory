@@ -84,4 +84,9 @@ public class MzLab {
         labHandler.assignPhlebotomistToTest(testRequestRecord);
         return patientHandler.getTotalPrice(patientEmail);
     }
+
+    public void confirmPaymentReceipt(String patientEmail) throws Exception {
+        patientHandler.confirmPaymentReceipt(patientEmail);
+    }
+
 }
