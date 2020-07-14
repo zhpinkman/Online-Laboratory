@@ -6,7 +6,6 @@ import com.example.demo.domain.lab.Phlebotomist;
 import com.example.demo.domain.lab.TestDesc;
 import com.example.demo.domain.statusEnums.TestRequestPaymentStatus;
 import com.example.demo.domain.statusEnums.TestRequestRecordStatus;
-import com.example.demo.domain.user.Prescription;
 import com.example.demo.domain.utility.Address;
 
 import java.util.Date;
@@ -68,13 +67,18 @@ public class TestRequestRecord {
     public double getEstimatedTimeToBeDone() { return 0; }
     public String getPhlebotomistInfo() { return phlebotomist.getInfo(); }
 
-    public void setAddress(Address address) {
+    public void setAddress(Address address) throws Exception {
+        if (!testRequestRecordStatus.equals(TestRequestRecordStatus.TESTS_ITEMS_SELECTED)) {
+            throw new Exception("incorrect order!");
+        }
         this.address = address;
+        testRequestRecordStatus = TestRequestRecordStatus.ADDRESS_SELECTED;
+        System.out.println("test's address have been selected");
     }
 
     public void setTestDescList(List<TestDesc> testDescList) {
         this.testDescList = testDescList;
-        testRequestRecordStatus = TestRequestRecordStatus.TESTS_SELECTED;
+        testRequestRecordStatus = TestRequestRecordStatus.TESTS_ITEMS_SELECTED;
         System.out.println("tests have been selected");
     }
 

@@ -50,4 +50,13 @@ public class MzLabController {
         return null;
     }
 
+    @PostMapping("/addresses")
+    public void setPatientTestAddress(@RequestBody Address address, HttpServletResponse response) throws IOException {
+        try {
+            MzLab.getInstance().setPatientTestAddress(address);
+        } catch (Exception e) {
+            response.sendError(HttpStatus.BAD_REQUEST.value(), e.toString());
+        }
+    }
+
 }

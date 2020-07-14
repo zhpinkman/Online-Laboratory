@@ -51,7 +51,7 @@ public class Patient extends User {
         return addresses;
     }
 
-    public void setTestRecordRequestAddress(Address address) {
+    public void setTestRecordRequestAddress(Address address) throws Exception {
         currentTestRequestRecord.setAddress(address);
     }
 

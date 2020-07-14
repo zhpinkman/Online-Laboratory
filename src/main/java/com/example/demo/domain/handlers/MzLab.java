@@ -84,7 +84,7 @@ public class MzLab {
         return patientHandler.getPatientAddresses(patientEmail);
     }
 
-    public void setTestRequestRecordAddress(Address address) throws Exception {
+    public void setPatientTestAddress(Address address) throws Exception {
         patientHandler.setTestRecordRequestAddress(patientEmail, address);
     }
 
