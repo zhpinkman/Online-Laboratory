@@ -5,7 +5,6 @@ import com.example.demo.domain.externalAPIs.BankAPI;
 import com.example.demo.domain.externalAPIs.InsuranceAPI;
 import com.example.demo.domain.statusEnums.PrescriptionStatus;
 
-import javax.swing.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -106,8 +105,8 @@ public class PatientHandler {
         return testRequestRecord.getTestDescList();
     }
 
-    public PatientInfo getPatientInfo(String patientEmail) throws Exception {
-        PatientInfo patientInfo = new PatientInfo();
+    public PatientTestInfo getPatientInfo(String patientEmail) throws Exception {
+        PatientTestInfo patientInfo = new PatientTestInfo();
         Patient patient = getPatient(patientEmail);
         patientInfo.setPatientGeneralInfo(patient.getName(), patient.getPatientPriority(), patient.getPrescriptions());
         TestRequestRecord testRequestRecord = patient.getCurrentTestRequestRecord();

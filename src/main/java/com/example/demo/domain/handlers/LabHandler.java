@@ -46,7 +46,4 @@ public class LabHandler {
         lab.prepareKit(testDescList);
     }
 
-    public void sendPatientInfoToPhlebotomist(Phlebotomist phlebotomist, PatientInfo patientInfo) {
-//        todo
-    }
 }
