@@ -14,6 +14,14 @@ public class Patient extends User {
     private List<Prescription> prescriptions;
     private TestRequestRecord currentTestRequestRecord;
 
+    public Patient(String name, String username, String userEmail, String password) {
+        super(name, username, userEmail, password);
+        addresses.add(new Address(20, 40, "temp address"));
+        patientPriority = 10;
+        insuranceCode = "youCannotFindIt";
+        insuranceCompany = "bime";
+    }
+
 
     public String getInsuranceCode() {
         return insuranceCode;

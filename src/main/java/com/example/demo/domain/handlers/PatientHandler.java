@@ -13,6 +13,10 @@ public class PatientHandler {
 
     private List<Patient> patientList;
 
+    public PatientHandler() {
+        patientList.add(new Patient("zhivar", "zh_pinkman", "zhivarsourati@gmail.com", "haha"));
+    }
+
 
     private Patient getPatient(String patientEmail) throws Exception {
         for (Patient patient: patientList) {
