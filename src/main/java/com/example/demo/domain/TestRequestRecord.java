@@ -50,7 +50,7 @@ public class TestRequestRecord {
             double rawPrice = selectedLab.getTestPrice(testDesc);
             if (insuranceVerified && selectedLab.supportInsurance(insuranceCompany) && testDesc.getInsuranceSupport()) {
                 int reductionFactor = InsuranceAPI.getInsuranceCompanyRedcutionFactor(insuranceCompany);
-                totalPrice += rawPrice*reductionFactor;
+                totalPrice += rawPrice*(100 - reductionFactor);
             } else {
                 totalPrice += rawPrice;
             }

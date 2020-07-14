@@ -6,6 +6,11 @@ public class LabTest {
     private double price;
     private TestDesc labTestDesc;
 
+    public LabTest(double price, TestDesc labTestDesc) {
+        this.price = price;
+        this.labTestDesc = labTestDesc;
+    }
+
     public boolean matches(TestDesc testDesc) {
         return labTestDesc.matches(testDesc);
     }

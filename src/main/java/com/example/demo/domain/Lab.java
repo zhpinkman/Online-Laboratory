@@ -11,6 +11,23 @@ public class Lab {
     private List<InsuranceCompany> supportedInsurances;
     List<Phlebotomist> phlebotomistList;
 
+    public Lab(String name, Address labAddress) {
+        this.name = name;
+        this.labAddress = labAddress;
+    }
+
+    public void setLabRepositories(LabRepository labRepositories) {
+        this.labRepositories = labRepositories;
+    }
+
+    public void setLabTests(List<LabTest> labTests) {
+        this.labTests = labTests;
+    }
+
+    public void setSupportedInsurances(List<InsuranceCompany> supportedInsurances) {
+        this.supportedInsurances = supportedInsurances;
+    }
+
     public boolean supportTests(List<TestDesc> testDescList) {
         for (TestDesc testDesc: testDescList) {
             if (!supportTest(testDesc)) {
