@@ -54,25 +54,29 @@ public class MzLab {
         return testDescs;
     }
 
-    private boolean testExists(TestDesc testDesc) {
-        for (TestDesc testDesc1: testDescs) {
-            if (testDesc.matches(testDesc1)) {
-                return true;
+    private TestDesc getTestByName(String name) throws Exception {
+        for (TestDesc testDesc: testDescs) {
+            if (testDesc.matches(name)) {
+                return testDesc;
             }
         }
-        return false;
+        throw new Exception("Test not found");
+    }
+
+    private List<TestDesc> getTestsByName(List<String> names) throws Exception {
+        List<TestDesc> testDescs = new ArrayList<>();
+        for (String name: names) {
+            testDescs.add(getTestByName(name));
+        }
+        return testDescs;
     }
 
     public List<Prescription> getReviewedPrescriptions() throws Exception {
         return patientHandler.getReviewedPrescritions(patientEmail);
     }
 
-    public void setPatientTests(List<TestDesc> testDescs) throws Exception {
-        for (TestDesc testDesc: testDescs) {
-            if (!testExists(testDesc)) {
-                throw new Exception("Test not available");
-            }
-        }
+    public void setPatientTests(List<String> testNames) throws Exception {
+        List<TestDesc> testDescs = getTestsByName(testNames);
         patientHandler.setPatientsTest(patientEmail, testDescs);
     }
 

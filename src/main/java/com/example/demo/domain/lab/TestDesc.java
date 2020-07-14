@@ -17,8 +17,8 @@ public class TestDesc {
         this.testChecks = testChecks;
     }
 
-    public boolean matches(TestDesc testDesc1) {
-        return testDesc1.testName.equals(testName);
+    public boolean matches(String testName) {
+        return this.testName.equals(testName);
     }
 
     public boolean getNeedsInsurance() {
