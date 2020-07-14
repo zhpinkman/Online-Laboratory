@@ -12,6 +12,20 @@ public class MzLab {
     private PatientHandler patientHandler = new PatientHandler();
     private LabHandler labHandler = new LabHandler();
 
+
+    public MzLab() {
+        TestDesc testDesc1 = new TestDesc("test1", 1, false, true, "nothing", "nothing");
+        TestDesc testDesc2 = new TestDesc("test2", 2, false, true, "nothing", "nothing");
+        TestDesc testDesc3 = new TestDesc("test3", 3, false, true, "nothing", "nothing");
+        TestDesc testDesc4 = new TestDesc("test4", 2, false, true, "nothing", "nothing");
+
+        this.testDescs.add(testDesc1);
+        this.testDescs.add(testDesc2);
+        this.testDescs.add(testDesc3);
+        this.testDescs.add(testDesc4);
+    }
+
+
     public List<TestDesc> getAllTests() {
         return testDescs;
     }

@@ -6,6 +6,7 @@ import com.example.demo.domain.externalAPIs.InsuranceAPI;
 import com.example.demo.domain.statusEnums.PrescriptionStatus;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -14,7 +15,9 @@ public class PatientHandler {
     private List<Patient> patientList;
 
     public PatientHandler() {
-        patientList.add(new Patient("zhivar", "zh_pinkman", "zhivarsourati@gmail.com", "haha"));
+        patientList.add(new Patient("zhivar", "zh_pinkman", "zhivarsourati@gmail.com", "haha",
+                new ArrayList<Address>(Arrays.asList(new Address(20, 40, "temp address"))),
+                10, "youCannotFindIt", "bime"));
     }
 
 
