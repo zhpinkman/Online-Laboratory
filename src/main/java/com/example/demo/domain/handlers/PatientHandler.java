@@ -12,7 +12,7 @@ import java.util.List;
 
 public class PatientHandler {
 
-    private List<Patient> patientList;
+    private List<Patient> patientList = new ArrayList<>();
 
     public PatientHandler() {
         patientList.add(new Patient("zhivar", "zh_pinkman", "zhivarsourati@gmail.com", "haha",

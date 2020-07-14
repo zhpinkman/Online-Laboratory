@@ -2,18 +2,33 @@ package com.example.demo.domain.handlers;
 
 import com.example.demo.domain.*;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 public class MzLab {
 
-    private List<TestDesc> testDescs;
+    private List<TestDesc> testDescs = new ArrayList<>();
 
     private PatientHandler patientHandler = new PatientHandler();
     private LabHandler labHandler = new LabHandler();
 
 
-    public MzLab() {
+    private MzLab() {
+        initTests();
+    }
+
+    private static MzLab instance;
+
+    public static MzLab getInstance() {
+        if (instance == null) {
+            instance = new MzLab();
+            return instance;
+        }
+        return instance;
+    }
+
+    private void initTests() {
         TestDesc testDesc1 = new TestDesc("test1", 1, false, true, "nothing", "nothing");
         TestDesc testDesc2 = new TestDesc("test2", 2, false, true, "nothing", "nothing");
         TestDesc testDesc3 = new TestDesc("test3", 3, false, true, "nothing", "nothing");

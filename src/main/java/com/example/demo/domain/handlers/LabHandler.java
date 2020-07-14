@@ -9,7 +9,7 @@ import java.util.List;
 
 public class LabHandler {
 
-    private List<Lab> labList;
+    private List<Lab> labList = new ArrayList<>();
 
     public LabHandler() {
         Lab lab1 = new Lab("lab", new Address(100, 200, "baqalia"));
@@ -47,6 +47,8 @@ public class LabHandler {
                 new Phlebotomist("phle", "phle", "mohsen.fayyaz77@gmail.com", "temp", "hdAni")));
 
         lab1.setPhlebotomistList(phlebotomistList);
+
+        labList.add(lab1);
     }
 
     public Lab getLab(String labName) throws Exception {

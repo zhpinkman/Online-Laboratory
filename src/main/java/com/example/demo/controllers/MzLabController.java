@@ -1,17 +1,21 @@
 package com.example.demo.controllers;
 
 
-import org.springframework.stereotype.Controller;
+import com.example.demo.domain.TestDesc;
+import com.example.demo.domain.handlers.MzLab;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
-@RequestMapping("/temp")
-public class TestController {
+@RequestMapping("/test")
+public class MzLabController {
 
     @GetMapping("")
-    public String echo() {
-        return "sad final project";
+    public List<TestDesc> getTestDescList() {
+        return MzLab.getInstance().getAllTests();
     }
+
 }

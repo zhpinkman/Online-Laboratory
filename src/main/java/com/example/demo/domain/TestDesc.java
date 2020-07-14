@@ -28,4 +28,20 @@ public class TestDesc {
     public boolean getInsuranceSupport() {
         return insuranceSupport;
     }
+
+    public String getTestName() {
+        return testName;
+    }
+
+    public int getTestPriority() {
+        return testPriority;
+    }
+
+    public String getPreTestChecks() {
+        return preTestChecks;
+    }
+
+    public String getTestChecks() {
+        return testChecks;
+    }
 }
