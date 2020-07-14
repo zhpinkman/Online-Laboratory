@@ -21,7 +21,7 @@ public class TestDesc {
         return testDesc1.testName.equals(testName);
     }
 
-    public boolean needsInsurance() {
+    public boolean getNeedsInsurance() {
         return !withoutPrescriptionSupport;
     }
 
@@ -37,11 +37,14 @@ public class TestDesc {
         return testPriority;
     }
 
-    public String getPreTestChecks() {
+    public String getPreTestChecks()
+    {
         return preTestChecks;
     }
 
-    public String getTestChecks() {
+    public String getTestChecks()
+    {
         return testChecks;
     }
+
 }

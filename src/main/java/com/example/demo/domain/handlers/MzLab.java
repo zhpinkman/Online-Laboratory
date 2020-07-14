@@ -8,6 +8,7 @@ import java.util.List;
 
 public class MzLab {
 
+    public static final String patientEmail = "zhivarsourati@gmail.com";
     private List<TestDesc> testDescs = new ArrayList<>();
 
     private PatientHandler patientHandler = new PatientHandler();
@@ -29,8 +30,8 @@ public class MzLab {
     }
 
     private void initTests() {
-        TestDesc testDesc1 = new TestDesc("test1", 1, false, true, "nothing", "nothing");
-        TestDesc testDesc2 = new TestDesc("test2", 2, false, true, "nothing", "nothing");
+        TestDesc testDesc1 = new TestDesc("test1", 1, true, true, "nothing", "nothing");
+        TestDesc testDesc2 = new TestDesc("test2", 2, true, true, "nothing", "nothing");
         TestDesc testDesc3 = new TestDesc("test3", 3, false, true, "nothing", "nothing");
         TestDesc testDesc4 = new TestDesc("test4", 2, false, true, "nothing", "nothing");
 
@@ -54,11 +55,11 @@ public class MzLab {
         return false;
     }
 
-    public List<Prescription> getReviewedPrescriptions(String patientEmail) throws Exception {
+    public List<Prescription> getReviewedPrescriptions() throws Exception {
         return patientHandler.getReviewedPrescritions(patientEmail);
     }
 
-    public void setPatientTests(String patientEmail, List<TestDesc> testDescs) throws Exception {
+    public void setPatientTests(List<TestDesc> testDescs) throws Exception {
         for (TestDesc testDesc: testDescs) {
             if (!testExists(testDesc)) {
                 throw new Exception("Test not available");
@@ -67,19 +68,19 @@ public class MzLab {
         patientHandler.setPatientsTest(patientEmail, testDescs);
     }
 
-    public List<Address> getPatientAddresses(String patientEmail) throws Exception {
+    public List<Address> getPatientAddresses() throws Exception {
         return patientHandler.getPatientAddresses(patientEmail);
     }
 
-    public void setTestRequestRecordAddress(String patientEmail, Address address) throws Exception {
+    public void setTestRequestRecordAddress(Address address) throws Exception {
         patientHandler.setTestRecordRequestAddress(patientEmail, address);
     }
 
-    public void attachPrescriptionToTest(String patientEmail, String prescriptionId) throws Exception {
+    public void attachPrescriptionToTest(String prescriptionId) throws Exception {
         patientHandler.attachPrescriptionToTest(patientEmail, prescriptionId);
     }
 
-    public List<Lab> verifyPatientTestRequest(String patientEmail) throws Exception {
+    public List<Lab> verifyPatientTestRequest() throws Exception {
         TestRequestRecord testRequestRecord = patientHandler.verifyPatientTestRequest(patientEmail);
         return getLabsWithFullSupport(testRequestRecord);
     }
@@ -95,26 +96,26 @@ public class MzLab {
         return fullTestInfo;
     }
 
-    public FullTestInfo setSelectedLabForTests(String patientEmail, String labName) throws Exception {
+    public FullTestInfo setSelectedLabForTests(String labName) throws Exception {
         Lab selectedLab = labHandler.getLab(labName);
         TestRequestRecord testRequestRecord = patientHandler.setSelectedLabForTests(patientEmail, selectedLab);
         List<LabTest> labTestList = labHandler.getLabTests(labName, testRequestRecord);
         return getFullTestInfo(labName, labTestList);
     }
 
-    public List<Date> confirmTestInfo(String patientEmail) throws Exception {
+    public List<Date> confirmTestInfo() throws Exception {
         TestRequestRecord testRequestRecord = patientHandler.confirmTestRequest(patientEmail);
         return labHandler.findRecommendedTimes(testRequestRecord);
     }
 
 
-    public double selectTimeForTest(String patientEmail, Date date) throws Exception { // it should return the amount patient should pay
+    public double selectTimeForTest(Date date) throws Exception { // it should return the amount patient should pay
         TestRequestRecord testRequestRecord = patientHandler.setTimeForTest(patientEmail, date);
         labHandler.assignPhlebotomistToTest(testRequestRecord);
         return patientHandler.getTotalPrice(patientEmail);
     }
 
-    public void confirmPaymentReceipt(String patientEmail) throws Exception {
+    public void confirmPaymentReceipt() throws Exception {
         patientHandler.confirmPaymentReceipt(patientEmail);
         PatientTestInfo patientInfo = patientHandler.getPatientInfo(patientEmail);
         Phlebotomist phlebotomist = patientHandler.getPatientsCurrentTestPhlebotomist(patientEmail);

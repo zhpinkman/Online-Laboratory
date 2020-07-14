@@ -2,6 +2,8 @@ package com.example.demo.domain;
 
 import com.example.demo.domain.statusEnums.PrescriptionStatus;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -11,7 +13,7 @@ public class Patient extends User {
     private String insuranceCode;
     private String insuranceCompany;
     private List<TestRequestRecord> testRequestRecordList;
-    private List<Prescription> prescriptions;
+    private List<Prescription> prescriptions = new ArrayList<>();
     private TestRequestRecord currentTestRequestRecord;
 
     public Patient(String name, String username, String userEmail, String password, List<Address> addresses, int patientPriority, String insuranceCode, String insuranceCompany) {
@@ -20,6 +22,13 @@ public class Patient extends User {
         this.patientPriority = patientPriority;
         this.insuranceCode = insuranceCode;
         this.insuranceCompany = insuranceCompany;
+
+        TestDesc testDesc3 = new TestDesc("test3", 3, false, true, "nothing", "nothing");
+        TestDesc testDesc4 = new TestDesc("test4", 2, false, true, "nothing", "nothing");
+
+        List<TestDesc> testDescList = new ArrayList<TestDesc>(Arrays.asList(testDesc3, testDesc4));
+
+        prescriptions.add(new Prescription("kshLkBS", "prescription", testDescList, PrescriptionStatus.REVIEWED));
     }
 
 

@@ -80,7 +80,7 @@ public class TestRequestRecord {
             throw new Exception("address is null");
         }
         for (TestDesc testDesc: testDescList) {
-            if (testDesc.needsInsurance()) {
+            if (testDesc.getNeedsInsurance()) {
                 if (!attachedPrescription.prescriptionIncludes(testDesc)) {
                     throw new Exception("test needs prescription but not attached");
                 }
