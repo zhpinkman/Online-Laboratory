@@ -21,4 +21,11 @@ public class Phlebotomist extends User{
         patientTestInfoList.add(patientTestInfo);
     }
 
+    public int getAmountOfWork() {
+        int result = 0;
+        for (PatientTestInfo patientTestInfo: patientTestInfoList) {
+            result += patientTestInfo.getWork();
+        }
+        return result;
+    }
 }

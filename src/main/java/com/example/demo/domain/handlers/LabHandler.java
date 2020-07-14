@@ -39,7 +39,8 @@ public class LabHandler {
     }
 
     public void assignPhlebotomistToTest(TestRequestRecord testRequestRecord) {
-        return; //  todo
+        Lab lab = testRequestRecord.getSelectedLab();
+        lab.assignPhlebotomistToTest(testRequestRecord);
     }
 
     public void prepareKitForRequest(Lab lab, List<TestDesc> testDescList) {

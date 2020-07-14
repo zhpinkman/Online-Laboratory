@@ -14,7 +14,6 @@ public class TestRequestRecord {
     private Date phlebotomistReferDate;
     private TestRequestPaymentStatus testRequestPaymentStatus;
     private Address address;
-//    private boolean insuranceRequest; todo not sure about usage of this one
     private List<TestDesc> testDescList;
     private Prescription attachedPrescription;
     private Lab selectedLab;
@@ -24,6 +23,9 @@ public class TestRequestRecord {
         testRequestRecordStatus = TestRequestRecordStatus.TEST_INITIATED;
     }
 
+    public TestRequestRecordStatus getTestRequestRecordStatus() {
+        return testRequestRecordStatus;
+    }
 
     public void setSelectedLab(Lab selectedLab) {
         this.selectedLab = selectedLab;
@@ -92,6 +94,10 @@ public class TestRequestRecord {
 
     public Lab getSelectedLab() {
         return selectedLab;
+    }
+
+    public void setPhlebotomist(Phlebotomist phlebotomist) {
+        this.phlebotomist = phlebotomist;
     }
 
     public void setPhlebotomistReferDate(Date phlebotomistReferDate) {

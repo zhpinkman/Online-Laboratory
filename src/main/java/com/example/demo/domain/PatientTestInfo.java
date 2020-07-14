@@ -1,5 +1,7 @@
 package com.example.demo.domain;
 
+import com.example.demo.domain.statusEnums.TestRequestRecordStatus;
+
 import java.util.List;
 
 public class PatientTestInfo {
@@ -16,5 +18,11 @@ public class PatientTestInfo {
 
     public void setTestRequestRecord(TestRequestRecord testRequestRecord) {
         this.testRequestRecord = testRequestRecord;
+    }
+
+    public int getWork() {
+        if (testRequestRecord.getTestRequestRecordStatus().equals(TestRequestRecordStatus.TEST_DELIVERED))
+            return 0;
+        return testRequestRecord.getTestDescList().size();
     }
 }

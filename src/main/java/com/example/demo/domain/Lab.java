@@ -68,4 +68,16 @@ public class Lab {
     public void prepareKit(List<TestDesc> testDescList) {
         labRepositories.prepareKit(testDescList);
     }
+
+    public void assignPhlebotomistToTest(TestRequestRecord testRequestRecord) {
+        int minimumWork = Integer.MAX_VALUE;
+        Phlebotomist lessOccupiedPhlebotomist = null;
+        for (Phlebotomist phlebotomist: phlebotomistList) {
+            if (phlebotomist.getAmountOfWork() < minimumWork) {
+                minimumWork = phlebotomist.getAmountOfWork();
+                lessOccupiedPhlebotomist = phlebotomist;
+            }
+        }
+        testRequestRecord.setPhlebotomist(lessOccupiedPhlebotomist);
+    }
 }
