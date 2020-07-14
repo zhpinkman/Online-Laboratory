@@ -10,4 +10,16 @@ public class Address {
         this.longitude = longitude;
         this.rawAddress = rawAddress;
     }
+
+    public double getLatitude() {
+        return latitude;
+    }
+
+    public double getLongitude() {
+        return longitude;
+    }
+
+    public String getRawAddress() {
+        return rawAddress;
+    }
 }
