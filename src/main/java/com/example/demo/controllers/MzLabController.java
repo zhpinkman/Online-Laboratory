@@ -55,7 +55,16 @@ public class MzLabController {
         try {
             MzLab.getInstance().setPatientTestAddress(address);
         } catch (Exception e) {
-            response.sendError(HttpStatus.BAD_REQUEST.value(), e.toString());
+            response.sendError(HttpStatus.BAD_REQUEST.value(), e.getMessage());
+        }
+    }
+
+    @PostMapping("/prescription")
+    public void attachPrescription(@RequestBody String prescriptionId, HttpServletResponse response) throws IOException {
+        try {
+            MzLab.getInstance().attachPrescriptionToTest(prescriptionId);
+        } catch (Exception e) {
+            response.sendError(HttpStatus.BAD_REQUEST.value(), e.getMessage());
         }
     }
 

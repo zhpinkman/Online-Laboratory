@@ -68,6 +68,7 @@ public class Patient extends User {
             if (prescription.idMatches(prescriptionId) &&
                     prescription.getPrescriptionStatus().equals(PrescriptionStatus.REVIEWED)) {
                 currentTestRequestRecord.attachPrescription(prescription);
+                return;
             }
         }
         throw new Exception("invalid prescription");

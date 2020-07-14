@@ -82,8 +82,12 @@ public class TestRequestRecord {
         System.out.println("tests have been selected");
     }
 
-    public void attachPrescription(Prescription prescription) {
+    public void attachPrescription(Prescription prescription) throws Exception {
+        if (!testRequestRecordStatus.equals(TestRequestRecordStatus.ADDRESS_SELECTED)) {
+            throw new Exception("incorrect order");
+        }
         attachedPrescription = prescription;
+        System.out.println("prescription added");
     }
 
     public void verifyCorrectness() throws Exception {
