@@ -21,6 +21,10 @@ public class TestDesc {
         return this.testName.equals(testName);
     }
 
+    public boolean matches(TestDesc testDesc) {
+        return this.testName.equals(testDesc.testName);
+    }
+
     public boolean getNeedsInsurance() {
         return !withoutPrescriptionSupport;
     }

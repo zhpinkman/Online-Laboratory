@@ -74,6 +74,8 @@ public class TestRequestRecord {
 
     public void setTestDescList(List<TestDesc> testDescList) {
         this.testDescList = testDescList;
+        testRequestRecordStatus = TestRequestRecordStatus.TESTS_SELECTED;
+        System.out.println("tests have been selected");
     }
 
     public void attachPrescription(Prescription prescription) {

@@ -55,7 +55,11 @@ public class Patient extends User {
         currentTestRequestRecord.setAddress(address);
     }
 
-    public void setTests(List<TestDesc> testDescs) {
+    public void setTests(List<TestDesc> testDescs) throws Exception {
+        if (currentTestRequestRecord != null) {
+            throw new Exception("another test is completing its workflow");
+        }
+        currentTestRequestRecord = new TestRequestRecord();
         currentTestRequestRecord.setTestDescList(testDescs);
     }
 

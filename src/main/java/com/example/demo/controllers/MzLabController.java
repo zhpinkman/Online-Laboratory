@@ -4,9 +4,7 @@ package com.example.demo.controllers;
 import com.example.demo.domain.user.Prescription;
 import com.example.demo.domain.lab.TestDesc;
 import com.example.demo.domain.handlers.MzLab;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -22,6 +20,11 @@ public class MzLabController {
     @GetMapping("/prescriptions")
     public List<Prescription> getPatientPrescriptions() throws Exception {
         return MzLab.getInstance().getReviewedPrescriptions();
+    }
+
+    @PostMapping("")
+    public void selectTests(@RequestBody List<String> testNames) throws Exception {
+        MzLab.getInstance().setPatientTests(testNames);
     }
 
 }
