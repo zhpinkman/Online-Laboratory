@@ -1,9 +1,12 @@
-package com.example.demo.domain;
+package com.example.demo.domain.lab;
+
+import com.example.demo.domain.user.User;
+import com.example.demo.domain.utility.PatientTestInfo;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Phlebotomist extends User{
+public class Phlebotomist extends User {
     private String phlebotomistCode;
     private String info;
     private List<PatientTestInfo> patientTestInfoList;

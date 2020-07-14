@@ -1,5 +1,6 @@
-package com.example.demo.domain;
+package com.example.demo.domain.user;
 
+import com.example.demo.domain.lab.TestDesc;
 import com.example.demo.domain.statusEnums.PrescriptionStatus;
 
 import java.util.List;

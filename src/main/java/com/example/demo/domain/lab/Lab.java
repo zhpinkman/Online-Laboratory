@@ -1,4 +1,8 @@
-package com.example.demo.domain;
+package com.example.demo.domain.lab;
+
+import com.example.demo.domain.externalAPIs.InsuranceCompany;
+import com.example.demo.domain.user.TestRequestRecord;
+import com.example.demo.domain.utility.Address;
 
 import java.util.ArrayList;
 import java.util.List;

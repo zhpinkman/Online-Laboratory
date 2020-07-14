@@ -1,6 +1,6 @@
 package com.example.demo.domain.externalAPIs;
 
-import com.example.demo.domain.PaymentReceipt;
+import com.example.demo.domain.user.PaymentReceipt;
 
 public class BankAPI {
 

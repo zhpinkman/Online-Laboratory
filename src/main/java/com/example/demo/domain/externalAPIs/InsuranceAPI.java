@@ -1,7 +1,5 @@
 package com.example.demo.domain.externalAPIs;
 
-import com.example.demo.domain.InsuranceCompany;
-
 import java.util.List;
 
 public class InsuranceAPI {

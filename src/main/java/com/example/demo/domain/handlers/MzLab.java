@@ -1,6 +1,14 @@
 package com.example.demo.domain.handlers;
 
-import com.example.demo.domain.*;
+import com.example.demo.domain.lab.Lab;
+import com.example.demo.domain.lab.LabTest;
+import com.example.demo.domain.lab.Phlebotomist;
+import com.example.demo.domain.lab.TestDesc;
+import com.example.demo.domain.user.Prescription;
+import com.example.demo.domain.user.TestRequestRecord;
+import com.example.demo.domain.utility.Address;
+import com.example.demo.domain.utility.FullTestInfo;
+import com.example.demo.domain.utility.PatientTestInfo;
 
 import java.util.ArrayList;
 import java.util.Date;

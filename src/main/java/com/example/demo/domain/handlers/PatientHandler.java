@@ -1,9 +1,17 @@
 package com.example.demo.domain.handlers;
 
-import com.example.demo.domain.*;
 import com.example.demo.domain.externalAPIs.BankAPI;
 import com.example.demo.domain.externalAPIs.InsuranceAPI;
+import com.example.demo.domain.lab.Lab;
+import com.example.demo.domain.lab.Phlebotomist;
+import com.example.demo.domain.lab.TestDesc;
 import com.example.demo.domain.statusEnums.PrescriptionStatus;
+import com.example.demo.domain.user.Patient;
+import com.example.demo.domain.user.PaymentReceipt;
+import com.example.demo.domain.user.Prescription;
+import com.example.demo.domain.user.TestRequestRecord;
+import com.example.demo.domain.utility.Address;
+import com.example.demo.domain.utility.PatientTestInfo;
 
 import java.util.ArrayList;
 import java.util.Arrays;

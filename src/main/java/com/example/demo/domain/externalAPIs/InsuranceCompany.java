@@ -1,4 +1,4 @@
-package com.example.demo.domain;
+package com.example.demo.domain.externalAPIs;
 
 public class InsuranceCompany {
     private String companyName;

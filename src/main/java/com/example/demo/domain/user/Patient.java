@@ -1,6 +1,9 @@
-package com.example.demo.domain;
+package com.example.demo.domain.user;
 
+import com.example.demo.domain.lab.Lab;
+import com.example.demo.domain.lab.TestDesc;
 import com.example.demo.domain.statusEnums.PrescriptionStatus;
+import com.example.demo.domain.utility.Address;
 
 import java.util.ArrayList;
 import java.util.Arrays;

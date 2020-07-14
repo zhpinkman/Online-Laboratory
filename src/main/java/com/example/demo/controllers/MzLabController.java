@@ -1,8 +1,8 @@
 package com.example.demo.controllers;
 
 
-import com.example.demo.domain.Prescription;
-import com.example.demo.domain.TestDesc;
+import com.example.demo.domain.user.Prescription;
+import com.example.demo.domain.lab.TestDesc;
 import com.example.demo.domain.handlers.MzLab;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

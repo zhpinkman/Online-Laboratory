@@ -1,4 +1,4 @@
-package com.example.demo.domain;
+package com.example.demo.domain.utility;
 
 public class Address {
     private double latitude;

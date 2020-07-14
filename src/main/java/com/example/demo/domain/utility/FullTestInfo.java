@@ -1,4 +1,6 @@
-package com.example.demo.domain;
+package com.example.demo.domain.utility;
+
+import com.example.demo.domain.lab.LabTest;
 
 import java.util.List;
 

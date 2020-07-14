@@ -1,5 +1,7 @@
-package com.example.demo.domain;
+package com.example.demo.domain.utility;
 
+import com.example.demo.domain.user.Prescription;
+import com.example.demo.domain.user.TestRequestRecord;
 import com.example.demo.domain.statusEnums.TestRequestRecordStatus;
 
 import java.util.List;

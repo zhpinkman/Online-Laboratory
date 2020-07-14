@@ -1,8 +1,13 @@
-package com.example.demo.domain;
+package com.example.demo.domain.user;
 
 import com.example.demo.domain.externalAPIs.InsuranceAPI;
+import com.example.demo.domain.lab.Lab;
+import com.example.demo.domain.lab.Phlebotomist;
+import com.example.demo.domain.lab.TestDesc;
 import com.example.demo.domain.statusEnums.TestRequestPaymentStatus;
 import com.example.demo.domain.statusEnums.TestRequestRecordStatus;
+import com.example.demo.domain.user.Prescription;
+import com.example.demo.domain.utility.Address;
 
 import java.util.Date;
 import java.util.List;
