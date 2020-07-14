@@ -1,8 +1,6 @@
 package com.example.demo.domain.handlers;
 
-import com.example.demo.domain.Lab;
-import com.example.demo.domain.LabTest;
-import com.example.demo.domain.TestRequestRecord;
+import com.example.demo.domain.*;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -41,6 +39,14 @@ public class LabHandler {
     }
 
     public void assignPhlebotomistToTest(TestRequestRecord testRequestRecord) {
-        return; // todo
+        return; //  todo
+    }
+
+    public void prepareKitForRequest(Lab lab, List<TestDesc> testDescList) {
+        lab.prepareKit(testDescList);
+    }
+
+    public void sendPatientInfoToPhlebotomist(Phlebotomist phlebotomist, PatientInfo patientInfo) {
+//        todo
     }
 }

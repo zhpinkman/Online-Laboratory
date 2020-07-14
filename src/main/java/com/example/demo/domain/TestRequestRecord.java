@@ -38,6 +38,10 @@ public class TestRequestRecord {
         return testDescList;
     }
 
+    public Phlebotomist getPhlebotomist() {
+        return phlebotomist;
+    }
+
     public double getTotalPrice(boolean insuranceVerified, String insuranceCompany) throws Exception {
         double totalPrice = 0;
         for (TestDesc testDesc: testDescList) {

@@ -6,9 +6,10 @@ import java.util.List;
 public class Lab {
     private String name;
     private Address labAddress;
-    private List<LabRepository> labRepositories;
+    private LabRepository labRepositories;
     private List<LabTest> labTests;
     private List<InsuranceCompany> supportedInsurances;
+    List<Phlebotomist> phlebotomistList;
 
     public boolean supportTests(List<TestDesc> testDescList) {
         for (TestDesc testDesc: testDescList) {
@@ -62,5 +63,9 @@ public class Lab {
             }
         }
         throw new Exception("lab test not found");
+    }
+
+    public void prepareKit(List<TestDesc> testDescList) {
+        labRepositories.prepareKit(testDescList);
     }
 }

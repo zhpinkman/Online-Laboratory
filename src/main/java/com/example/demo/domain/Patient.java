@@ -71,4 +71,8 @@ public class Patient extends User {
     public void setPaymentDone() {
         currentTestRequestRecord.setPaymentDone();
     }
+
+    public int getPatientPriority() {
+        return patientPriority;
+    }
 }

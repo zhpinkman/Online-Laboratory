@@ -105,4 +105,19 @@ public class PatientHandler {
         TestRequestRecord testRequestRecord = patient.getCurrentTestRequestRecord();
         return testRequestRecord.getTestDescList();
     }
+
+    public PatientInfo getPatientInfo(String patientEmail) throws Exception {
+        PatientInfo patientInfo = new PatientInfo();
+        Patient patient = getPatient(patientEmail);
+        patientInfo.setPatientGeneralInfo(patient.getName(), patient.getPatientPriority(), patient.getPrescriptions());
+        TestRequestRecord testRequestRecord = patient.getCurrentTestRequestRecord();
+        patientInfo.setTestRequestRecord(testRequestRecord);
+        return patientInfo;
+    }
+
+    public Phlebotomist getPatientsCurrentTestPhlebotomist(String patientEmail) throws Exception {
+        Patient patient = getPatient(patientEmail);
+        TestRequestRecord testRequestRecord = patient.getCurrentTestRequestRecord();
+        return testRequestRecord.getPhlebotomist();
+    }
 }

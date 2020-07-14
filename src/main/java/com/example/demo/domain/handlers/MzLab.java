@@ -91,7 +91,9 @@ public class MzLab {
 
     public void confirmPaymentReceipt(String patientEmail) throws Exception {
         patientHandler.confirmPaymentReceipt(patientEmail);
-        patientHandler.sendPatientInfoToPhlebotomist(patientEmail);
+        PatientInfo patientInfo = patientHandler.getPatientInfo(patientEmail);
+        Phlebotomist phlebotomist = patientHandler.getPatientsCurrentTestPhlebotomist(patientEmail);
+        labHandler.sendPatientInfoToPhlebotomist(phlebotomist, patientInfo);
         System.out.println("patient info sent to phlebotomist");
         Lab lab = patientHandler.getSelectedLab(patientEmail);
         List<TestDesc> testDescList = patientHandler.getTestDescList(patientEmail);

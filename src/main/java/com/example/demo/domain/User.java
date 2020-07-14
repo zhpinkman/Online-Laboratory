@@ -6,8 +6,11 @@ public class User {
     private String userEmail;
     private String password;
 
-
     public boolean emailsMatch(String patientEmail) {
         return userEmail.equals(patientEmail);
+    }
+
+    public String getName() {
+        return name;
     }
 }
