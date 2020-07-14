@@ -9,6 +9,10 @@ public class InsuranceAPI {
     private static List<InsuranceCompany> insuranceCompanyList;
 
     public static boolean verifyCode(String code) {
+        if (code == null) {
+            System.out.println("no code for verification");
+            return false;
+        }
         System.out.println("code verified");
         return true;
     }

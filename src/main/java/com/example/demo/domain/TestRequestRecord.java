@@ -40,10 +40,12 @@ public class TestRequestRecord {
     public double getTotalPrice(boolean insuranceVerified, String insuranceCompany) throws Exception {
         double totalPrice = 0;
         for (TestDesc testDesc: testDescList) {
+            double rawPrice = selectedLab.getTestPrice(testDesc);
             if (insuranceVerified && selectedLab.supportInsurance(insuranceCompany) && testDesc.getInsuranceSupport()) {
                 int reductionFactor = InsuranceAPI.getInsuranceCompanyRedcutionFactor(insuranceCompany);
-                double rawPrice = selectedLab.getTestPrice(testDesc);
                 totalPrice += rawPrice*reductionFactor;
+            } else {
+                totalPrice += rawPrice;
             }
         }
         testRequestRecordStatus = TestRequestRecordStatus.WAITING_FOR_PAYMENT;
