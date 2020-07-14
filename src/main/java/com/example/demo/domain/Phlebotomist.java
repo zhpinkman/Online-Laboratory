@@ -8,7 +8,9 @@ public class Phlebotomist extends User{
     private String info;
     private List<PatientTestInfo> patientTestInfoList;
 
-    public Phlebotomist() {
+    public Phlebotomist(String name, String username, String userEmail, String password, String phlebotomistCode) {
+        super(name, username, userEmail, password);
+        this.phlebotomistCode = phlebotomistCode;
         patientTestInfoList = new ArrayList<>();
     }
 
