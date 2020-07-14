@@ -91,5 +91,6 @@ public class PatientHandler {
         double amountToPay = getTotalPrice(patientEmail);
         PaymentReceipt paymentReceipt = new PaymentReceipt(amountToPay);
         BankAPI.verifyPayment(paymentReceipt);
+        patient.setPaymentDone();
     }
 }

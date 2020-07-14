@@ -67,4 +67,8 @@ public class Patient extends User {
         currentTestRequestRecord.setPhlebotomistReferDate(date);
         return currentTestRequestRecord;
     }
+
+    public void setPaymentDone() {
+        currentTestRequestRecord.setPaymentDone();
+    }
 }

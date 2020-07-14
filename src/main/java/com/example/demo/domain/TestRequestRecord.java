@@ -20,6 +20,7 @@ public class TestRequestRecord {
     private Lab selectedLab;
 
     TestRequestRecord() {
+        testRequestPaymentStatus = TestRequestPaymentStatus.NOT_PAYED;
         testRequestRecordStatus = TestRequestRecordStatus.TEST_INITIATED;
     }
 
@@ -92,5 +93,10 @@ public class TestRequestRecord {
     public void setPhlebotomistReferDate(Date phlebotomistReferDate) {
         this.phlebotomistReferDate = phlebotomistReferDate;
         testRequestRecordStatus = TestRequestRecordStatus.TIME_SELECTED;
+    }
+
+    public void setPaymentDone() {
+        testRequestPaymentStatus = TestRequestPaymentStatus.PAYED;
+        testRequestRecordStatus = TestRequestRecordStatus.PAYMENT_DONE;
     }
 }
