@@ -63,14 +63,18 @@ public class MzLab {
         return labHandler.getLabsWithFullSupport(testRequestRecord);
     }
 
-    public FullTestInfo setSelectedLabForTests(String patientEmail, String labName) throws Exception {
+    private FullTestInfo getFullTestInfo(String labName, List<LabTest> labTestList) {
         FullTestInfo fullTestInfo = new FullTestInfo();
-        Lab selectedLab = labHandler.getLab(labName);
-        fullTestInfo.setLabName(selectedLab.getName());
-        TestRequestRecord testRequestRecord = patientHandler.setSelectedLabForTests(patientEmail, selectedLab);
-        List<LabTest> labTestList = labHandler.getLabTests(labName, testRequestRecord);
+        fullTestInfo.setLabName(labName);
         fullTestInfo.setLabTestList(labTestList);
         return fullTestInfo;
+    }
+
+    public FullTestInfo setSelectedLabForTests(String patientEmail, String labName) throws Exception {
+        Lab selectedLab = labHandler.getLab(labName);
+        TestRequestRecord testRequestRecord = patientHandler.setSelectedLabForTests(patientEmail, selectedLab);
+        List<LabTest> labTestList = labHandler.getLabTests(labName, testRequestRecord);
+        return getFullTestInfo(labName, labTestList);
     }
 
     public List<Date> confirmTestInfo(String patientEmail) throws Exception {
@@ -87,6 +91,10 @@ public class MzLab {
 
     public void confirmPaymentReceipt(String patientEmail) throws Exception {
         patientHandler.confirmPaymentReceipt(patientEmail);
+        patientHandler.sendPatientInfoToPhlebotomist(patientEmail);
+        System.out.println("patient info sent to phlebotomist");
+
+        labHandler.prepareKitForRequest();
     }
 
 }
