@@ -93,8 +93,9 @@ public class MzLab {
         patientHandler.confirmPaymentReceipt(patientEmail);
         patientHandler.sendPatientInfoToPhlebotomist(patientEmail);
         System.out.println("patient info sent to phlebotomist");
-
-        labHandler.prepareKitForRequest();
+        Lab lab = patientHandler.getSelectedLab(patientEmail);
+        List<TestDesc> testDescList = patientHandler.getTestDescList(patientEmail);
+        labHandler.prepareKitForRequest(lab, testDescList);
     }
 
 }

@@ -93,4 +93,16 @@ public class PatientHandler {
         BankAPI.verifyPayment(paymentReceipt);
         patient.setPaymentDone();
     }
+
+    public Lab getSelectedLab(String patientEmail) throws Exception {
+        Patient patient = getPatient(patientEmail);
+        TestRequestRecord testRequestRecord = patient.getCurrentTestRequestRecord();
+        return testRequestRecord.getSelectedLab();
+    }
+
+    public List<TestDesc> getTestDescList(String patientEmail) throws Exception {
+        Patient patient = getPatient(patientEmail);
+        TestRequestRecord testRequestRecord = patient.getCurrentTestRequestRecord();
+        return testRequestRecord.getTestDescList();
+    }
 }
