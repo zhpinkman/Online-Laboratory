@@ -1,6 +1,7 @@
 package com.example.demo.controllers;
 
 
+import com.example.demo.domain.lab.Lab;
 import com.example.demo.domain.user.Prescription;
 import com.example.demo.domain.lab.TestDesc;
 import com.example.demo.domain.handlers.MzLab;
@@ -66,6 +67,16 @@ public class MzLabController {
         } catch (Exception e) {
             response.sendError(HttpStatus.BAD_REQUEST.value(), e.getMessage());
         }
+    }
+
+    @GetMapping("/verifyAndGetLabs")
+    public List<Lab> getLabsWithFullSupport(HttpServletResponse response) throws IOException {
+        try {
+            return MzLab.getInstance().verifyPatientTestRequest();
+        } catch (Exception e) {
+            response.sendError(HttpStatus.BAD_REQUEST.value(), e.getMessage());
+        }
+        return null;
     }
 
 }

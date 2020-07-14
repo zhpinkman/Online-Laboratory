@@ -62,6 +62,12 @@ public class Lab {
         return name;
     }
 
+    public Address getLabAddress() {
+        return labAddress;
+    }
+
+
+
     public List<LabTest> getLabTests(List<TestDesc> testDescList) {
         List<LabTest> labTestList = new ArrayList<>();
         for (LabTest labTest: labTests) {
