@@ -11,6 +11,10 @@ public class Lab {
     private List<InsuranceCompany> supportedInsurances;
     List<Phlebotomist> phlebotomistList;
 
+    public void setPhlebotomistList(List<Phlebotomist> phlebotomistList) {
+        this.phlebotomistList = phlebotomistList;
+    }
+
     public Lab(String name, Address labAddress) {
         this.name = name;
         this.labAddress = labAddress;

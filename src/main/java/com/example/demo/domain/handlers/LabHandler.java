@@ -40,6 +40,13 @@ public class LabHandler {
 
         lab1.setLabTests(labTestList);
 
+
+//        phlebotomists
+
+        List<Phlebotomist> phlebotomistList= new ArrayList<Phlebotomist>(Arrays.asList(
+                new Phlebotomist("phle", "phle", "mohsen.fayyaz77@gmail.com", "temp", "hdAni")));
+
+        lab1.setPhlebotomistList(phlebotomistList);
     }
 
     public Lab getLab(String labName) throws Exception {
