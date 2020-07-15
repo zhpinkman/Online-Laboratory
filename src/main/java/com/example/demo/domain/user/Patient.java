@@ -88,7 +88,7 @@ public class Patient extends User {
         return currentTestRequestRecord;
     }
 
-    public TestRequestRecord setTimeForTest(Date date) {
+    public TestRequestRecord setTimeForTest(Date date) throws Exception {
         currentTestRequestRecord.setPhlebotomistReferDate(date);
         return currentTestRequestRecord;
     }

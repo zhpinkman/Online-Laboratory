@@ -1,10 +1,15 @@
 package com.example.demo.domain.externalAPIs;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class InsuranceAPI {
 
-    private static List<InsuranceCompany> insuranceCompanyList;
+    private static List<InsuranceCompany> insuranceCompanyList = new ArrayList<>(
+            Arrays.asList(new InsuranceCompany("bime", 80)));
+
 
     public static boolean verifyCode(String code) {
         if (code == null) {
@@ -15,12 +20,12 @@ public class InsuranceAPI {
         return true;
     }
 
-    public static int getInsuranceCompanyRedcutionFactor(String companyName) throws Exception {
+    public static int getInsuranceCompanyRedcutionFactor(String companyName){
         for (InsuranceCompany insuranceCompany: insuranceCompanyList) {
             if (insuranceCompany.namesMatches(companyName)) {
                 return insuranceCompany.getReductionFactor();
             }
         }
-        throw new Exception("insurance company does not exists");
+        return 0;
     }
 }

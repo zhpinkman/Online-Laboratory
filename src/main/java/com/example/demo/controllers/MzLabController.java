@@ -7,6 +7,7 @@ import com.example.demo.domain.lab.TestDesc;
 import com.example.demo.domain.handlers.MzLab;
 import com.example.demo.domain.utility.Address;
 import com.example.demo.domain.utility.FullTestInfo;
+import com.example.demo.domain.utility.Receipt;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -101,4 +102,9 @@ public class MzLabController {
         return null;
     }
 
+    @PostMapping("/selectTimeForTest")
+    public Receipt selectTimeForTest(@RequestBody Date date, HttpServletResponse response) throws Exception {
+        System.out.println(date.toString());
+        return MzLab.getInstance().selectTimeForTest(date);
+    }
 }

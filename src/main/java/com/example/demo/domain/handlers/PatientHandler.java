@@ -12,6 +12,7 @@ import com.example.demo.domain.user.Prescription;
 import com.example.demo.domain.user.TestRequestRecord;
 import com.example.demo.domain.utility.Address;
 import com.example.demo.domain.utility.PatientTestInfo;
+import com.example.demo.domain.utility.Receipt;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -93,7 +94,7 @@ public class PatientHandler {
         return patient.setTimeForTest(date);
     }
 
-    public double getTotalPrice(String patientEmail) throws Exception {
+    public Receipt getTotalPrice(String patientEmail) throws Exception {
         Patient patient = getPatient(patientEmail);
         boolean insuranceVerified = InsuranceAPI.verifyCode(patient.getInsuranceCode());
         TestRequestRecord testRequestRecord = patient.getCurrentTestRequestRecord();
@@ -102,7 +103,7 @@ public class PatientHandler {
 
     public void confirmPaymentReceipt(String patientEmail) throws Exception {
         Patient patient = getPatient(patientEmail);
-        double amountToPay = getTotalPrice(patientEmail);
+        double amountToPay = getTotalPrice(patientEmail).getTotalAmount();
         PaymentReceipt paymentReceipt = new PaymentReceipt(amountToPay);
         BankAPI.verifyPayment(paymentReceipt);
         patient.setPaymentDone();

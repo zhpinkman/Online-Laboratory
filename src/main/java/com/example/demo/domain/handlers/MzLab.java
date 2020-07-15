@@ -9,6 +9,7 @@ import com.example.demo.domain.user.TestRequestRecord;
 import com.example.demo.domain.utility.Address;
 import com.example.demo.domain.utility.FullTestInfo;
 import com.example.demo.domain.utility.PatientTestInfo;
+import com.example.demo.domain.utility.Receipt;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -127,7 +128,7 @@ public class MzLab {
     }
 
 
-    public double selectTimeForTest(Date date) throws Exception { // it should return the amount patient should pay
+    public Receipt selectTimeForTest(Date date) throws Exception {
         TestRequestRecord testRequestRecord = patientHandler.setTimeForTest(patientEmail, date);
         labHandler.assignPhlebotomistToTest(testRequestRecord);
         return patientHandler.getTotalPrice(patientEmail);

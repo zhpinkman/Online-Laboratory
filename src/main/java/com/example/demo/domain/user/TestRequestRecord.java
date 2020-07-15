@@ -7,6 +7,8 @@ import com.example.demo.domain.lab.TestDesc;
 import com.example.demo.domain.statusEnums.TestRequestPaymentStatus;
 import com.example.demo.domain.statusEnums.TestRequestRecordStatus;
 import com.example.demo.domain.utility.Address;
+import com.example.demo.domain.utility.Receipt;
+import com.example.demo.domain.utility.ReceiptItem;
 
 import java.util.Date;
 import java.util.List;
@@ -52,19 +54,21 @@ public class TestRequestRecord {
         return phlebotomist;
     }
 
-    public double getTotalPrice(boolean insuranceVerified, String insuranceCompany) throws Exception {
+    public Receipt getTotalPrice(boolean insuranceVerified, String insuranceCompany) throws Exception {
+        Receipt receipt = new Receipt();
         double totalPrice = 0;
         for (TestDesc testDesc: testDescList) {
-            double rawPrice = selectedLab.getTestPrice(testDesc);
+            double price = selectedLab.getTestPrice(testDesc);
             if (insuranceVerified && selectedLab.supportInsurance(insuranceCompany) && testDesc.getInsuranceSupport()) {
                 int reductionFactor = InsuranceAPI.getInsuranceCompanyRedcutionFactor(insuranceCompany);
-                totalPrice += rawPrice*(100 - reductionFactor);
-            } else {
-                totalPrice += rawPrice;
+                price *= (100 - reductionFactor)/100;
             }
+            totalPrice += price;
+            receipt.addToReceipt(new ReceiptItem(testDesc.getTestName(), price));
         }
+        receipt.setTotalAmount(totalPrice);
         testRequestRecordStatus = TestRequestRecordStatus.WAITING_FOR_PAYMENT;
-        return totalPrice;
+        return receipt;
     }
 
 
@@ -112,7 +116,7 @@ public class TestRequestRecord {
         if (!testRequestRecordStatus.equals(TestRequestRecordStatus.LAB_SELECTED)) {
             throw new Exception("incorrect order! first you should select lab for your tests");
         }
-        testRequestRecordStatus = TestRequestRecordStatus.CONFIRMED;
+        testRequestRecordStatus = TestRequestRecordStatus.INFO_CONFIRMED;
         System.out.println("test's info have been confirmed");
     }
 
@@ -122,11 +126,16 @@ public class TestRequestRecord {
 
     public void setPhlebotomist(Phlebotomist phlebotomist) {
         this.phlebotomist = phlebotomist;
+        testRequestRecordStatus = TestRequestRecordStatus.PHLEBOTOMIST_ASSIGNED;
+        System.out.println("phlebotomist have been assigned");
     }
 
-    public void setPhlebotomistReferDate(Date phlebotomistReferDate) {
+    public void setPhlebotomistReferDate(Date phlebotomistReferDate) throws Exception {
+        if (!testRequestRecordStatus.equals(TestRequestRecordStatus.INFO_CONFIRMED)) {
+            throw new Exception("incorrect order! you ought to confirm your test info first");
+        }
         this.phlebotomistReferDate = phlebotomistReferDate;
-        testRequestRecordStatus = TestRequestRecordStatus.TIME_SELECTED;
+        testRequestRecordStatus = TestRequestRecordStatus.TIME_SELECTED_WAITING_FOR_PHLEBOTOMIST;
     }
 
     public void setPaymentDone() {
