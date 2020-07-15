@@ -103,8 +103,22 @@ public class MzLabController {
     }
 
     @PostMapping("/selectTimeForTest")
-    public Receipt selectTimeForTest(@RequestBody Date date, HttpServletResponse response) throws Exception {
+    public Receipt selectTimeForTest(@RequestBody Date date, HttpServletResponse response) throws IOException{
         System.out.println(date.toString());
-        return MzLab.getInstance().selectTimeForTest(date);
+        try {
+            return MzLab.getInstance().selectTimeForTest(date);
+        } catch (Exception e) {
+            response.sendError(HttpStatus.BAD_REQUEST.value(), e.getMessage());
+        }
+        return null;
+    }
+
+    @PostMapping("/confirmPaymentReceipt")
+    public void confirmPaymentReceipt(HttpServletResponse response) throws IOException {
+        try {
+            MzLab.getInstance().confirmPaymentReceipt();
+        } catch (Exception e) {
+            response.sendError(HttpStatus.BAD_REQUEST.value(), e.getMessage());
+        }
     }
 }
