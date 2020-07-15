@@ -79,7 +79,7 @@ public class Patient extends User {
         return currentTestRequestRecord;
     }
 
-    public void setSelectedLabForTests(Lab selectedLab) {
+    public void setSelectedLabForTests(Lab selectedLab) throws Exception {
         currentTestRequestRecord.setSelectedLab(selectedLab);
     }
 

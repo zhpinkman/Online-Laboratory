@@ -13,6 +13,10 @@ public class InsuranceCompany {
         return companyName.equals(insuranceCompanyName);
     }
 
+    public String getCompanyName() {
+        return companyName;
+    }
+
     public int getReductionFactor() {
         return reductionFactor;
     }

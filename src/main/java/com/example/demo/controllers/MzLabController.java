@@ -6,6 +6,7 @@ import com.example.demo.domain.user.Prescription;
 import com.example.demo.domain.lab.TestDesc;
 import com.example.demo.domain.handlers.MzLab;
 import com.example.demo.domain.utility.Address;
+import com.example.demo.domain.utility.FullTestInfo;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -70,9 +71,19 @@ public class MzLabController {
     }
 
     @GetMapping("/verifyAndGetLabs")
-    public List<Lab> getLabsWithFullSupport(HttpServletResponse response) throws IOException {
+    public List<FullTestInfo> getLabsWithFullSupport(HttpServletResponse response) throws IOException {
         try {
             return MzLab.getInstance().verifyPatientTestRequest();
+        } catch (Exception e) {
+            response.sendError(HttpStatus.BAD_REQUEST.value(), e.getMessage());
+        }
+        return null;
+    }
+
+    @PostMapping("/setLab")
+    public FullTestInfo setPatientTestLab(@RequestBody String labName, HttpServletResponse response) throws IOException {
+        try {
+            return MzLab.getInstance().setSelectedLabForTests(labName);
         } catch (Exception e) {
             response.sendError(HttpStatus.BAD_REQUEST.value(), e.getMessage());
         }

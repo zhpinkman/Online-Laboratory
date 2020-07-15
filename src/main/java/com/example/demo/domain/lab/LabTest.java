@@ -27,4 +27,8 @@ public class LabTest {
     public double getPrice() {
         return price;
     }
+
+    public TestDesc getLabTestDesc() {
+        return labTestDesc;
+    }
 }

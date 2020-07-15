@@ -92,19 +92,25 @@ public class MzLab {
         patientHandler.attachPrescriptionToTest(patientEmail, prescriptionId);
     }
 
-    public List<Lab> verifyPatientTestRequest() throws Exception {
+    public List<FullTestInfo> verifyPatientTestRequest() throws Exception {
         TestRequestRecord testRequestRecord = patientHandler.verifyPatientTestRequest(patientEmail);
         return getLabsWithFullSupport(testRequestRecord);
     }
 
-    public List<Lab> getLabsWithFullSupport(TestRequestRecord testRequestRecord) {
-        return labHandler.getLabsWithFullSupport(testRequestRecord);
+    public List<FullTestInfo> getLabsWithFullSupport(TestRequestRecord testRequestRecord) throws Exception {
+        List<FullTestInfo> fullTestInfos = new ArrayList<>();
+        List<Lab> labList = labHandler.getLabsWithFullSupport(testRequestRecord);
+        for (Lab lab: labList) {
+            fullTestInfos.add(getFullTestInfo(lab, labHandler.getLabTests(lab.getName(), testRequestRecord)));
+        }
+        return fullTestInfos;
     }
 
-    private FullTestInfo getFullTestInfo(String labName, List<LabTest> labTestList) {
+    private FullTestInfo getFullTestInfo(Lab lab, List<LabTest> labTestList) {
         FullTestInfo fullTestInfo = new FullTestInfo();
-        fullTestInfo.setLabName(labName);
+        fullTestInfo.setLabName(lab.getName());
         fullTestInfo.setLabTestList(labTestList);
+        fullTestInfo.setInsuranceCompanies(lab.getSupportedInsurancesNames());
         return fullTestInfo;
     }
 
@@ -112,7 +118,7 @@ public class MzLab {
         Lab selectedLab = labHandler.getLab(labName);
         TestRequestRecord testRequestRecord = patientHandler.setSelectedLabForTests(patientEmail, selectedLab);
         List<LabTest> labTestList = labHandler.getLabTests(labName, testRequestRecord);
-        return getFullTestInfo(labName, labTestList);
+        return getFullTestInfo(selectedLab, labTestList);
     }
 
     public List<Date> confirmTestInfo() throws Exception {

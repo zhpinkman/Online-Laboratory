@@ -111,4 +111,13 @@ public class Lab {
         }
         testRequestRecord.setPhlebotomist(lessOccupiedPhlebotomist);
     }
+
+
+    public List<String> getSupportedInsurancesNames() {
+        List<String> insuranceCompanyNames = new ArrayList<>();
+        for (InsuranceCompany insuranceCompany: supportedInsurances) {
+            insuranceCompanyNames.add(insuranceCompany.getCompanyName());
+        }
+        return insuranceCompanyNames;
+    }
 }

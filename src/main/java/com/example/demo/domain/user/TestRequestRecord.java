@@ -31,9 +31,12 @@ public class TestRequestRecord {
         return testRequestRecordStatus;
     }
 
-    public void setSelectedLab(Lab selectedLab) {
+    public void setSelectedLab(Lab selectedLab) throws Exception {
+        if (!testRequestRecordStatus.equals(TestRequestRecordStatus.TESTS_CONFIRMD)) {
+            throw new Exception("incorrect order! first you have to confirm tests");
+        }
         this.selectedLab = selectedLab;
-        testRequestRecordStatus = TestRequestRecordStatus.WAITING_TO_BE_CONFIRMED;
+        testRequestRecordStatus = TestRequestRecordStatus.LAB_SELECTED;
     }
 
     public Address getAddress() {
@@ -97,10 +100,11 @@ public class TestRequestRecord {
         for (TestDesc testDesc: testDescList) {
             if (testDesc.getNeedsInsurance()) {
                 if (!attachedPrescription.prescriptionIncludes(testDesc)) {
-                    throw new Exception("test needs prescription but not attached");
+                    throw new Exception("test needs prescription but have not attached");
                 }
             }
         }
+        testRequestRecordStatus = TestRequestRecordStatus.TESTS_CONFIRMD;
     }
 
     public void confirmRequest() {
