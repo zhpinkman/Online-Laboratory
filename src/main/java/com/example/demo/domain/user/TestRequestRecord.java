@@ -37,6 +37,7 @@ public class TestRequestRecord {
         }
         this.selectedLab = selectedLab;
         testRequestRecordStatus = TestRequestRecordStatus.LAB_SELECTED;
+        System.out.println("test's lab have been selected");
     }
 
     public Address getAddress() {
@@ -107,8 +108,12 @@ public class TestRequestRecord {
         testRequestRecordStatus = TestRequestRecordStatus.TESTS_CONFIRMD;
     }
 
-    public void confirmRequest() {
+    public void confirmRequest() throws Exception {
+        if (!testRequestRecordStatus.equals(TestRequestRecordStatus.LAB_SELECTED)) {
+            throw new Exception("incorrect order! first you should select lab for your tests");
+        }
         testRequestRecordStatus = TestRequestRecordStatus.CONFIRMED;
+        System.out.println("test's info have been confirmed");
     }
 
     public Lab getSelectedLab() {

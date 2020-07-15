@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -84,6 +85,16 @@ public class MzLabController {
     public FullTestInfo setPatientTestLab(@RequestBody String labName, HttpServletResponse response) throws IOException {
         try {
             return MzLab.getInstance().setSelectedLabForTests(labName);
+        } catch (Exception e) {
+            response.sendError(HttpStatus.BAD_REQUEST.value(), e.getMessage());
+        }
+        return null;
+    }
+
+    @GetMapping("/confirmTestInfo")
+    public List<Date> confirmAndGetTimes(HttpServletResponse response) throws IOException {
+        try {
+            return MzLab.getInstance().confirmTestInfo();
         } catch (Exception e) {
             response.sendError(HttpStatus.BAD_REQUEST.value(), e.getMessage());
         }

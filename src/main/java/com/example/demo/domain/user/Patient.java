@@ -83,7 +83,7 @@ public class Patient extends User {
         currentTestRequestRecord.setSelectedLab(selectedLab);
     }
 
-    public TestRequestRecord confirmTestRequest() {
+    public TestRequestRecord confirmTestRequest() throws Exception {
         currentTestRequestRecord.confirmRequest();
         return currentTestRequestRecord;
     }

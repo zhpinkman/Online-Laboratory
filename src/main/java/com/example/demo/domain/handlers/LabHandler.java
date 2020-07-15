@@ -5,10 +5,7 @@ import com.example.demo.domain.lab.*;
 import com.example.demo.domain.user.TestRequestRecord;
 import com.example.demo.domain.utility.Address;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 public class LabHandler {
 
@@ -79,7 +76,13 @@ public class LabHandler {
     }
 
     public List<Date> findRecommendedTimes(TestRequestRecord testRequestRecord) {
-        return null; // todo
+        Date today = new Date();
+        Date tomorrow = new Date();
+        Calendar c = Calendar.getInstance();
+        c.setTime(tomorrow);
+        c.add(Calendar.DATE, 1);
+        tomorrow = c.getTime();
+        return new ArrayList<>(Arrays.asList(today, tomorrow));
     }
 
     public void assignPhlebotomistToTest(TestRequestRecord testRequestRecord) {
