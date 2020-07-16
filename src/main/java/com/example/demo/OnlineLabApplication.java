@@ -19,7 +19,7 @@ public class OnlineLabApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(OnlineLabApplication.class, args);
-		runTestCommands();
+//		runTestCommands();
 	}
 
 	private static void runTestCommands(){

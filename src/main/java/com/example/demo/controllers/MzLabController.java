@@ -1,7 +1,6 @@
 package com.example.demo.controllers;
 
 
-import com.example.demo.domain.lab.Lab;
 import com.example.demo.domain.user.Prescription;
 import com.example.demo.domain.lab.TestDesc;
 import com.example.demo.domain.handlers.MzLab;
@@ -13,6 +12,8 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -36,10 +37,12 @@ public class MzLabController {
     }
 
     @PostMapping("")
-    public void selectTests(@RequestBody List<String> testNames, HttpServletResponse response) throws IOException {
+    public void selectTests(@RequestBody String testNamesString, HttpServletResponse response) throws IOException {
         try {
+            List<String> testNames = new ArrayList<String>(Arrays.asList(testNamesString.split(",")));
             MzLab.getInstance().setPatientTests(testNames);
         } catch (Exception e) {
+            e.printStackTrace();
             response.sendError(HttpStatus.BAD_REQUEST.value(), e.getMessage());
         }
     }
