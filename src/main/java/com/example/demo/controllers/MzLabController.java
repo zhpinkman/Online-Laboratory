@@ -1,9 +1,9 @@
 package com.example.demo.controllers;
 
 
-import com.example.demo.domain.user.Prescription;
-import com.example.demo.domain.lab.TestDesc;
 import com.example.demo.domain.handlers.MzLab;
+import com.example.demo.domain.lab.TestDesc;
+import com.example.demo.domain.user.Prescription;
 import com.example.demo.domain.utility.Address;
 import com.example.demo.domain.utility.FullTestInfo;
 import com.example.demo.domain.utility.Receipt;
@@ -39,7 +39,7 @@ public class MzLabController {
     @PostMapping("")
     public void selectTests(@RequestBody String testNamesString, HttpServletResponse response) throws IOException {
         try {
-            testNamesString = testNamesString.substring(testNamesString.indexOf("=")+1);
+            testNamesString = testNamesString.substring(testNamesString.indexOf("=") + 1);
             List<String> testNames = new ArrayList<String>(Arrays.asList(testNamesString.split("-")));
             MzLab.getInstance().setPatientTests(testNames);
         } catch (Exception e) {
@@ -61,7 +61,7 @@ public class MzLabController {
     @PostMapping("/addresses")
     public void setPatientTestAddress(@RequestBody String addressIndexString, HttpServletResponse response) throws IOException {
         try {
-            addressIndexString = addressIndexString.substring(addressIndexString.indexOf("=")+1);
+            addressIndexString = addressIndexString.substring(addressIndexString.indexOf("=") + 1);
             Address address = MzLab.getInstance().getPatientAddresses().get(Integer.valueOf(addressIndexString));
             MzLab.getInstance().setPatientTestAddress(address);
         } catch (Exception e) {
@@ -73,6 +73,7 @@ public class MzLabController {
     @PostMapping("/prescription")
     public void attachPrescription(@RequestBody String prescriptionId, HttpServletResponse response) throws IOException {
         try {
+            prescriptionId = prescriptionId.substring(prescriptionId.indexOf("=") + 1);
             MzLab.getInstance().attachPrescriptionToTest(prescriptionId);
         } catch (Exception e) {
             response.sendError(HttpStatus.BAD_REQUEST.value(), e.getMessage());
@@ -92,6 +93,7 @@ public class MzLabController {
     @PostMapping("/setLab")
     public FullTestInfo setPatientTestLab(@RequestBody String labName, HttpServletResponse response) throws IOException {
         try {
+            labName = labName.substring(labName.indexOf("=") + 1);
             return MzLab.getInstance().setSelectedLabForTests(labName);
         } catch (Exception e) {
             response.sendError(HttpStatus.BAD_REQUEST.value(), e.getMessage());
@@ -99,10 +101,13 @@ public class MzLabController {
         return null;
     }
 
+    List<Date> savedDates;
+
     @GetMapping("/confirmTestInfo")
     public List<Date> confirmAndGetTimes(HttpServletResponse response) throws IOException {
         try {
-            return MzLab.getInstance().confirmTestInfo();
+            savedDates = MzLab.getInstance().confirmTestInfo();
+            return savedDates;
         } catch (Exception e) {
             response.sendError(HttpStatus.BAD_REQUEST.value(), e.getMessage());
         }
@@ -110,9 +115,10 @@ public class MzLabController {
     }
 
     @PostMapping("/selectTimeForTest")
-    public Receipt selectTimeForTest(@RequestBody Date date, HttpServletResponse response) throws IOException{
-        System.out.println(date.toString());
+    public Receipt selectTimeForTest(@RequestBody String dateIndexString, HttpServletResponse response) throws IOException {
         try {
+            dateIndexString = dateIndexString.substring(dateIndexString.indexOf("=") + 1);
+            Date date = savedDates.get(Integer.valueOf(dateIndexString));
             return MzLab.getInstance().selectTimeForTest(date);
         } catch (Exception e) {
             response.sendError(HttpStatus.BAD_REQUEST.value(), e.getMessage());
