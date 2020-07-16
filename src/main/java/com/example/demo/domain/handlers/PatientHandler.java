@@ -135,4 +135,10 @@ public class PatientHandler {
         TestRequestRecord testRequestRecord = patient.getCurrentTestRequestRecord();
         return testRequestRecord.getPhlebotomist();
     }
+
+    public void setWaitingForPayment(String patientEmail) throws Exception {
+        Patient patient = getPatient(patientEmail);
+        TestRequestRecord testRequestRecord = patient.getCurrentTestRequestRecord();
+        testRequestRecord.setWaitingForPayment();
+    }
 }

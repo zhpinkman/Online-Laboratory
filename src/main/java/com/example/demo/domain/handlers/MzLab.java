@@ -131,7 +131,9 @@ public class MzLab {
     public Receipt selectTimeForTest(Date date) throws Exception {
         TestRequestRecord testRequestRecord = patientHandler.setTimeForTest(patientEmail, date);
         labHandler.assignPhlebotomistToTest(testRequestRecord);
-        return patientHandler.getTotalPrice(patientEmail);
+        Receipt receipt = patientHandler.getTotalPrice(patientEmail);
+        patientHandler.setWaitingForPayment(patientEmail);
+        return receipt;
     }
 
     public void confirmPaymentReceipt() throws Exception {

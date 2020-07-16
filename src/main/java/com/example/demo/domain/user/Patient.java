@@ -96,7 +96,7 @@ public class Patient extends User {
         return currentTestRequestRecord;
     }
 
-    public void setPaymentDone() {
+    public void setPaymentDone() throws Exception {
         currentTestRequestRecord.setPaymentDone();
     }
 

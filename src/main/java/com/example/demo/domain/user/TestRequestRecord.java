@@ -61,13 +61,12 @@ public class TestRequestRecord {
             double price = selectedLab.getTestPrice(testDesc);
             if (insuranceVerified && selectedLab.supportInsurance(insuranceCompany) && testDesc.getInsuranceSupport()) {
                 int reductionFactor = InsuranceAPI.getInsuranceCompanyRedcutionFactor(insuranceCompany);
-                price *= (100 - reductionFactor)/100;
+                price *= (double) (100 - reductionFactor) /100;
             }
             totalPrice += price;
             receipt.addToReceipt(new ReceiptItem(testDesc.getTestName(), price));
         }
         receipt.setTotalAmount(totalPrice);
-        testRequestRecordStatus = TestRequestRecordStatus.WAITING_FOR_PAYMENT;
         return receipt;
     }
 
@@ -138,8 +137,15 @@ public class TestRequestRecord {
         testRequestRecordStatus = TestRequestRecordStatus.TIME_SELECTED_WAITING_FOR_PHLEBOTOMIST;
     }
 
-    public void setPaymentDone() {
+    public void setPaymentDone() throws Exception {
+        if (!testRequestRecordStatus.equals(TestRequestRecordStatus.WAITING_FOR_PAYMENT)) {
+            throw new Exception("incorrect order!");
+        }
         testRequestPaymentStatus = TestRequestPaymentStatus.PAYED;
         testRequestRecordStatus = TestRequestRecordStatus.PAYMENT_DONE;
+    }
+
+    public void setWaitingForPayment() {
+        testRequestRecordStatus = TestRequestRecordStatus.WAITING_FOR_PAYMENT;
     }
 }
