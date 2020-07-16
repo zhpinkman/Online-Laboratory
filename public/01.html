@@ -15,9 +15,19 @@
 </form>
 <hr>
 <form action="/test/" method="POST">
-    <input type="text" name="testNamesString" value="test1,test2"><br><br>
+    <input type="text" name="testNamesString" value="test3-test4"><br><br>
     <input type="submit" value="selectTests">
 </form>
+<hr>
+<form action="/test/addresses/" method="GET">
+    <input type="submit" value="getPatientAddresses">
+</form>
+<hr>
+<form action="/test/addresses/" method="POST">
+    <input type="text" name="addressIndexString" value="0"><br><br>
+    <input type="submit" value="setPatientTestAddress">
+</form>
+<hr>
 
 </body>
 </html>

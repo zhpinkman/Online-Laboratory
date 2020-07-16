@@ -39,7 +39,8 @@ public class MzLabController {
     @PostMapping("")
     public void selectTests(@RequestBody String testNamesString, HttpServletResponse response) throws IOException {
         try {
-            List<String> testNames = new ArrayList<String>(Arrays.asList(testNamesString.split(",")));
+            testNamesString = testNamesString.substring(testNamesString.indexOf("=")+1);
+            List<String> testNames = new ArrayList<String>(Arrays.asList(testNamesString.split("-")));
             MzLab.getInstance().setPatientTests(testNames);
         } catch (Exception e) {
             e.printStackTrace();
@@ -58,11 +59,14 @@ public class MzLabController {
     }
 
     @PostMapping("/addresses")
-    public void setPatientTestAddress(@RequestBody Address address, HttpServletResponse response) throws IOException {
+    public void setPatientTestAddress(@RequestBody String addressIndexString, HttpServletResponse response) throws IOException {
         try {
+            addressIndexString = addressIndexString.substring(addressIndexString.indexOf("=")+1);
+            Address address = MzLab.getInstance().getPatientAddresses().get(Integer.valueOf(addressIndexString));
             MzLab.getInstance().setPatientTestAddress(address);
         } catch (Exception e) {
             response.sendError(HttpStatus.BAD_REQUEST.value(), e.getMessage());
+            e.printStackTrace();
         }
     }
 

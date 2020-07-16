@@ -52,6 +52,9 @@ public class Patient extends User {
     }
 
     public void setTestRecordRequestAddress(Address address) throws Exception {
+        if(currentTestRequestRecord == null){
+            throw new Exception("Please start the use case from the beginning");
+        }
         currentTestRequestRecord.setAddress(address);
     }
 

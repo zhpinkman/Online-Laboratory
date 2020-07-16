@@ -61,7 +61,7 @@ public class MzLab {
                 return testDesc;
             }
         }
-        throw new Exception("Test not found");
+        throw new Exception("Test not found -> " + name);
     }
 
     private List<TestDesc> getTestsByName(List<String> names) throws Exception {
