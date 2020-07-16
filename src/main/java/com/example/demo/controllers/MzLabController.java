@@ -37,15 +37,17 @@ public class MzLabController {
     }
 
     @PostMapping("")
-    public void selectTests(@RequestBody String testNamesString, HttpServletResponse response) throws IOException {
+    public String selectTests(@RequestBody String testNamesString, HttpServletResponse response) throws IOException {
         try {
             testNamesString = testNamesString.substring(testNamesString.indexOf("=") + 1);
             List<String> testNames = new ArrayList<String>(Arrays.asList(testNamesString.split("-")));
             MzLab.getInstance().setPatientTests(testNames);
+            return "OK";
         } catch (Exception e) {
             e.printStackTrace();
             response.sendError(HttpStatus.BAD_REQUEST.value(), e.getMessage());
         }
+        return null;
     }
 
     @GetMapping("/addresses")
@@ -59,25 +61,29 @@ public class MzLabController {
     }
 
     @PostMapping("/addresses")
-    public void setPatientTestAddress(@RequestBody String addressIndexString, HttpServletResponse response) throws IOException {
+    public String setPatientTestAddress(@RequestBody String addressIndexString, HttpServletResponse response) throws IOException {
         try {
             addressIndexString = addressIndexString.substring(addressIndexString.indexOf("=") + 1);
             Address address = MzLab.getInstance().getPatientAddresses().get(Integer.valueOf(addressIndexString));
             MzLab.getInstance().setPatientTestAddress(address);
+            return "OK";
         } catch (Exception e) {
             response.sendError(HttpStatus.BAD_REQUEST.value(), e.getMessage());
             e.printStackTrace();
         }
+        return null;
     }
 
     @PostMapping("/prescription")
-    public void attachPrescription(@RequestBody String prescriptionId, HttpServletResponse response) throws IOException {
+    public String attachPrescription(@RequestBody String prescriptionId, HttpServletResponse response) throws IOException {
         try {
             prescriptionId = prescriptionId.substring(prescriptionId.indexOf("=") + 1);
             MzLab.getInstance().attachPrescriptionToTest(prescriptionId);
+            return "OK";
         } catch (Exception e) {
             response.sendError(HttpStatus.BAD_REQUEST.value(), e.getMessage());
         }
+        return null;
     }
 
     @GetMapping("/verifyAndGetLabs")
@@ -127,11 +133,13 @@ public class MzLabController {
     }
 
     @PostMapping("/confirmPaymentReceipt")
-    public void confirmPaymentReceipt(HttpServletResponse response) throws IOException {
+    public String confirmPaymentReceipt(HttpServletResponse response) throws IOException {
         try {
             MzLab.getInstance().confirmPaymentReceipt();
+            return "OK";
         } catch (Exception e) {
             response.sendError(HttpStatus.BAD_REQUEST.value(), e.getMessage());
         }
+        return null;
     }
 }
