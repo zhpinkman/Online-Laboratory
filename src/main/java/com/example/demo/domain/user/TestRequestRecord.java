@@ -75,6 +75,9 @@ public class TestRequestRecord {
     public String getPhlebotomistInfo() { return phlebotomist.getInfo(); }
 
     public void setAddress(Address address) throws Exception {
+        if (address == null) {
+            throw new Exception("you have to select a address");
+        }
         if (!testRequestRecordStatus.equals(TestRequestRecordStatus.TESTS_ITEMS_SELECTED)) {
             throw new Exception("incorrect order!");
         }
@@ -83,27 +86,34 @@ public class TestRequestRecord {
         System.out.println("test's address have been selected");
     }
 
-    public void setTestDescList(List<TestDesc> testDescList) {
+    public void setTestDescList(List<TestDesc> testDescList) throws Exception {
+        if (testDescList.size() == 0) {
+            throw new Exception("you have to select some tests");
+        }
         this.testDescList = testDescList;
         testRequestRecordStatus = TestRequestRecordStatus.TESTS_ITEMS_SELECTED;
         System.out.println("tests have been selected");
     }
 
     public void attachPrescription(Prescription prescription) throws Exception {
+        if (prescription == null) {
+            throw new Exception("you have to select a prescription");
+        }
         if (!testRequestRecordStatus.equals(TestRequestRecordStatus.ADDRESS_SELECTED)) {
             throw new Exception("incorrect order");
         }
         attachedPrescription = prescription;
+        testRequestRecordStatus = TestRequestRecordStatus.PRESCRIPTION_ADDED;
         System.out.println("prescription added");
     }
 
     public void verifyCorrectness() throws Exception {
-        if (address == null) {
-            throw new Exception("address is null");
+        if (!testRequestRecordStatus.equals(TestRequestRecordStatus.ADDRESS_SELECTED) && !testRequestRecordStatus.equals(TestRequestRecordStatus.PRESCRIPTION_ADDED)) {
+            throw new Exception("incorrect order!!");
         }
         for (TestDesc testDesc: testDescList) {
             if (testDesc.getNeedsPrescription()) {
-                if (!attachedPrescription.prescriptionIncludes(testDesc)) {
+                if (!attachedPrescription.prescriptionIncludes(testDesc) || attachedPrescription == null) {
                     throw new Exception("test needs prescription but have not attached");
                 }
             }

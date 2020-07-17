@@ -84,7 +84,10 @@ public class Patient extends User {
     }
 
 
-    public TestRequestRecord getCurrentTestRequestRecord() {
+    public TestRequestRecord getCurrentTestRequestRecord() throws Exception {
+        if (currentTestRequestRecord == null) {
+            throw new Exception("there are no tests undergoing");
+        }
         return currentTestRequestRecord;
     }
 

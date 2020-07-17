@@ -60,12 +60,18 @@ public class LabHandler {
         throw new Exception("lab not found");
     }
 
-    public List<Lab> getLabsWithFullSupport(TestRequestRecord testRequestRecord) {
+    public List<Lab> getLabsWithFullSupport(TestRequestRecord testRequestRecord) throws Exception {
+        if (labList.size() == 0) {
+            throw new Exception("no labs available yet");
+        }
         List<Lab> labsWithFullSupport = new ArrayList<>();
         for (Lab lab: labList) {
             if (lab.supportTests(testRequestRecord.getTestDescList())) {
                 labsWithFullSupport.add(lab);
             }
+        }
+        if (labsWithFullSupport.size() == 0) {
+            throw new Exception("there is no lab that supports all tests");
         }
         return labsWithFullSupport;
     }
