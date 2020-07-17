@@ -43,11 +43,17 @@ public class Patient extends User {
         return insuranceCompany;
     }
 
-    public List<Prescription> getPrescriptions() {
+    public List<Prescription> getPrescriptions() throws Exception {
+        if (prescriptions.size() <= 0) {
+            throw new Exception("no prescription available!");
+        }
         return prescriptions;
     }
 
-    public List<Address> getAddresses() {
+    public List<Address> getAddresses() throws Exception {
+        if (addresses.size() == 0) {
+            throw new Exception("there are no addresses in address book");
+        }
         return addresses;
     }
 

@@ -25,7 +25,7 @@ public class TestDesc {
         return this.testName.equals(testDesc.testName);
     }
 
-    public boolean getNeedsInsurance() {
+    public boolean getNeedsPrescription() {
         return !withoutPrescriptionSupport;
     }
 
