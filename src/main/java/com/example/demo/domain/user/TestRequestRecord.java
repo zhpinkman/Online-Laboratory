@@ -35,7 +35,7 @@ public class TestRequestRecord {
 
     public void setSelectedLab(Lab selectedLab) throws Exception {
         if (!testRequestRecordStatus.equals(TestRequestRecordStatus.TESTS_CONFIRMD)) {
-            throw new Exception("incorrect order! first you have to confirm tests");
+            throw new Exception("incorrect order!");
         }
         this.selectedLab = selectedLab;
         testRequestRecordStatus = TestRequestRecordStatus.LAB_SELECTED;

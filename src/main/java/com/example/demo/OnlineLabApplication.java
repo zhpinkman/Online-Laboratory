@@ -2,6 +2,7 @@ package com.example.demo;
 
 import com.example.demo.controllers.MzLabController;
 import com.example.demo.domain.handlers.MzLab;
+import com.example.demo.domain.lab.PhlebotomistInfo;
 import com.example.demo.domain.lab.TestDesc;
 import com.example.demo.domain.user.Prescription;
 import com.example.demo.domain.utility.Address;
@@ -38,7 +39,8 @@ public class OnlineLabApplication {
 			List<FullTestInfo> fullTestInfoList = mzLab.verifyPatientTestRequest();
 			mzLab.setSelectedLabForTests(fullTestInfoList.get(0).getLabName());
 			List<Date> dates = mzLab.confirmTestInfo();
-			Receipt receipt = mzLab.selectTimeForTest(dates.get(0));
+			PhlebotomistInfo phlebotomistInfo= mzLab.selectTimeForTest(dates.get(0));
+			Receipt receipt = mzLab.getReceipt();
 			mzLab.confirmPaymentReceipt();
 
 		}catch (Exception e){

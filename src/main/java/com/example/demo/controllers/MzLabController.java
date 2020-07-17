@@ -2,6 +2,7 @@ package com.example.demo.controllers;
 
 
 import com.example.demo.domain.handlers.MzLab;
+import com.example.demo.domain.lab.PhlebotomistInfo;
 import com.example.demo.domain.lab.TestDesc;
 import com.example.demo.domain.user.Prescription;
 import com.example.demo.domain.utility.Address;
@@ -126,11 +127,21 @@ public class MzLabController {
     }
 
     @PostMapping("/selectTimeForTest")
-    public Receipt selectTimeForTest(@RequestBody String dateIndexString, HttpServletResponse response) throws IOException {
+    public PhlebotomistInfo selectTimeForTest(@RequestBody String dateIndexString, HttpServletResponse response) throws IOException {
         try {
             dateIndexString = dateIndexString.substring(dateIndexString.indexOf("=") + 1);
             Date date = savedDates.get(Integer.valueOf(dateIndexString));
             return MzLab.getInstance().selectTimeForTest(date);
+        } catch (Exception e) {
+            response.sendError(HttpStatus.BAD_REQUEST.value(), e.getMessage());
+        }
+        return null;
+    }
+
+    @GetMapping("/getReceipt")
+    public Receipt getReceipt(HttpServletResponse response) throws IOException {
+        try {
+            return MzLab.getInstance().getReceipt();
         } catch (Exception e) {
             response.sendError(HttpStatus.BAD_REQUEST.value(), e.getMessage());
         }

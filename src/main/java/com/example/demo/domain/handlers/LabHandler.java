@@ -91,9 +91,9 @@ public class LabHandler {
         return new ArrayList<>(Arrays.asList(today, tomorrow));
     }
 
-    public void assignPhlebotomistToTest(TestRequestRecord testRequestRecord) {
+    public PhlebotomistInfo assignPhlebotomistToTest(TestRequestRecord testRequestRecord) throws Exception {
         Lab lab = testRequestRecord.getSelectedLab();
-        lab.assignPhlebotomistToTest(testRequestRecord);
+        return lab.assignPhlebotomistToTest(testRequestRecord);
     }
 
     public void prepareKitForRequest(Lab lab, List<TestDesc> testDescList) {

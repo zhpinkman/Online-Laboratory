@@ -1,9 +1,6 @@
 package com.example.demo.domain.handlers;
 
-import com.example.demo.domain.lab.Lab;
-import com.example.demo.domain.lab.LabTest;
-import com.example.demo.domain.lab.Phlebotomist;
-import com.example.demo.domain.lab.TestDesc;
+import com.example.demo.domain.lab.*;
 import com.example.demo.domain.user.Prescription;
 import com.example.demo.domain.user.TestRequestRecord;
 import com.example.demo.domain.utility.Address;
@@ -131,9 +128,12 @@ public class MzLab {
     }
 
 
-    public Receipt selectTimeForTest(Date date) throws Exception {
+    public PhlebotomistInfo selectTimeForTest(Date date) throws Exception {
         TestRequestRecord testRequestRecord = patientHandler.setTimeForTest(patientEmail, date);
-        labHandler.assignPhlebotomistToTest(testRequestRecord);
+        return labHandler.assignPhlebotomistToTest(testRequestRecord);
+    }
+
+    public Receipt getReceipt() throws Exception {
         Receipt receipt = patientHandler.getTotalPrice(patientEmail);
         patientHandler.setWaitingForPayment(patientEmail);
         return receipt;
