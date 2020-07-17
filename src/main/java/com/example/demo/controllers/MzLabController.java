@@ -22,8 +22,13 @@ import java.util.List;
 public class MzLabController {
 
     @GetMapping("")
-    public List<TestDesc> getTestDescList() {
-        return MzLab.getInstance().getAllTests();
+    public List<TestDesc> getTestDescList(HttpServletResponse response) throws IOException {
+        try {
+            return MzLab.getInstance().getAllTests();
+        } catch (Exception e) {
+            response.sendError(HttpStatus.BAD_REQUEST.value(), e.getMessage());
+        }
+        return null;
     }
 
     @GetMapping("/prescriptions")

@@ -51,7 +51,10 @@ public class MzLab {
     }
 
 
-    public List<TestDesc> getAllTests() {
+    public List<TestDesc> getAllTests() throws Exception {
+        if (testDescs.size() <= 0) {
+            throw new Exception("there are no tests to be shown");
+        }
         return testDescs;
     }
 
