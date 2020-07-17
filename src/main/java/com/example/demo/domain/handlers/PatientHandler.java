@@ -44,6 +44,9 @@ public class PatientHandler {
         List<Prescription> patientPrescriptions = patient.getPrescriptions();
         List<Prescription> reviewedOnes = new ArrayList<>();
         for (Prescription prescription: patientPrescriptions) {
+            if (prescription.getPrescriptionStatus().equals(PrescriptionStatus.BAD_RECORD)) {
+                throw new Exception("there is a bad record in your prescriptions list");
+            }
             if (prescription.getPrescriptionStatus().equals(PrescriptionStatus.REVIEWED)) {
                 reviewedOnes.add(prescription);
             }
