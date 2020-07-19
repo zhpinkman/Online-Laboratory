@@ -27,4 +27,9 @@ public class InsuranceAPI {
         }
         return 0;
     }
+
+    public static boolean SupportsLab(String selectedLabName, String insuranceCompany) {
+        System.out.println("");
+        return true;
+    }
 }

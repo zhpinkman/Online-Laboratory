@@ -2,7 +2,6 @@ package com.example.demo.domain.handlers;
 
 import com.example.demo.domain.lab.*;
 import com.example.demo.domain.user.Prescription;
-import com.example.demo.domain.user.TestRequestRecord;
 import com.example.demo.domain.utility.Address;
 import com.example.demo.domain.utility.FullTestInfo;
 import com.example.demo.domain.utility.PatientTestInfo;
@@ -94,47 +93,40 @@ public class MzLab {
     }
 
     public List<FullTestInfo> verifyPatientTestRequest() throws Exception {
-        TestRequestRecord testRequestRecord = patientHandler.verifyPatientTestRequest(patientEmail);
-        return getLabsWithFullSupport(testRequestRecord);
+        patientHandler.verifyPatientTestRequest(patientEmail);
+        return getLabsWithFullSupport(patientHandler.getTestDescList(patientEmail));
     }
 
-    public List<FullTestInfo> getLabsWithFullSupport(TestRequestRecord testRequestRecord) throws Exception {
-        List<FullTestInfo> fullTestInfos = new ArrayList<>();
-        List<Lab> labList = labHandler.getLabsWithFullSupport(testRequestRecord);
-        for (Lab lab: labList) {
-            fullTestInfos.add(getFullTestInfo(lab, labHandler.getLabTests(lab.getName(), testRequestRecord)));
-        }
-        return fullTestInfos;
+    public List<FullTestInfo> getLabsWithFullSupport(List<TestDesc> testDescList) throws Exception {
+        return labHandler.getLabsWithFullSupportInfo(testDescList);
     }
 
-    private FullTestInfo getFullTestInfo(Lab lab, List<LabTest> labTestList) {
-        FullTestInfo fullTestInfo = new FullTestInfo();
-        fullTestInfo.setLabName(lab.getName());
-        fullTestInfo.setLabTestList(labTestList);
-        fullTestInfo.setInsuranceCompanies(lab.getSupportedInsurancesNames());
-        return fullTestInfo;
-    }
 
     public FullTestInfo setSelectedLabForTests(String labName) throws Exception {
-        Lab selectedLab = labHandler.getLab(labName);
-        TestRequestRecord testRequestRecord = patientHandler.setSelectedLabForTests(patientEmail, selectedLab);
-        List<LabTest> labTestList = labHandler.getLabTests(labName, testRequestRecord);
-        return getFullTestInfo(selectedLab, labTestList);
+        patientHandler.setSelectedLabForTests(patientEmail, labName);
+        List<LabTest> labTestList = labHandler.getLabTests(labName, patientHandler.getTestDescList(patientEmail));
+        return labHandler.getFullTestInfo(labName, labTestList);
     }
 
     public List<Date> confirmTestInfo() throws Exception {
-        TestRequestRecord testRequestRecord = patientHandler.confirmTestRequest(patientEmail);
-        return labHandler.findRecommendedTimes(testRequestRecord);
+        patientHandler.confirmTestRequest(patientEmail);
+        return labHandler.findRecommendedTimes();
     }
 
 
     public PhlebotomistInfo selectTimeForTest(Date date) throws Exception {
-        TestRequestRecord testRequestRecord = patientHandler.setTimeForTest(patientEmail, date);
-        return labHandler.assignPhlebotomistToTest(testRequestRecord);
+        patientHandler.setTimeForTest(patientEmail, date);
+        String labName = patientHandler.getSelectedLabName(patientEmail);
+        PhlebotomistInfo phlebotomistInfo = labHandler.assignPhlebotomistToTest(labName);
+        patientHandler.setPhlebotomistInfo(patientEmail, phlebotomistInfo);
+        return  phlebotomistInfo;
     }
 
     public Receipt getReceipt() throws Exception {
-        Receipt receipt = patientHandler.getTotalPrice(patientEmail);
+        List<TestDesc> testDescs = patientHandler.getTestDescList(patientEmail);
+        String labName = patientHandler.getSelectedLabName(patientEmail);
+        List<Double> prices = labHandler.getTestPrices(labName, testDescs);
+        Receipt receipt = patientHandler.getTotalPrice(patientEmail, prices);
         patientHandler.setWaitingForPayment(patientEmail);
         return receipt;
     }
@@ -142,12 +134,12 @@ public class MzLab {
     public void confirmPaymentReceipt() throws Exception {
         patientHandler.confirmPaymentReceipt(patientEmail);
         PatientTestInfo patientInfo = patientHandler.getPatientInfo(patientEmail);
-        Phlebotomist phlebotomist = patientHandler.getPatientsCurrentTestPhlebotomist(patientEmail);
-        phlebotomist.addTestRecordToList(patientInfo);
+        PhlebotomistInfo phlebotomistInfo = patientHandler.getPatientsCurrentTestPhlebotomist(patientEmail);
+        labHandler.addTestToPhlebotomistSchedule(phlebotomistInfo, patientInfo);
         System.out.println("patient info sent to phlebotomist");
-        Lab lab = patientHandler.getSelectedLab(patientEmail);
+        String labName = patientHandler.getSelectedLabName(patientEmail);
         List<TestDesc> testDescList = patientHandler.getTestDescList(patientEmail);
-        labHandler.prepareKitForRequest(lab, testDescList);
+        labHandler.prepareKitForRequest(labName, testDescList);
     }
 
 }

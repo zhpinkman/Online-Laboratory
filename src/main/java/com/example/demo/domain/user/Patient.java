@@ -1,9 +1,12 @@
 package com.example.demo.domain.user;
 
 import com.example.demo.domain.lab.Lab;
+import com.example.demo.domain.lab.PhlebotomistInfo;
 import com.example.demo.domain.lab.TestDesc;
 import com.example.demo.domain.statusEnums.PrescriptionStatus;
 import com.example.demo.domain.utility.Address;
+import com.example.demo.domain.utility.PatientTestInfo;
+import com.example.demo.domain.utility.Receipt;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -18,6 +21,7 @@ public class Patient extends User {
     private List<TestRequestRecord> testRequestRecordList;
     private List<Prescription> prescriptions = new ArrayList<>();
     private TestRequestRecord currentTestRequestRecord;
+    private Receipt currentReceipt;
 
     public Patient(String name, String username, String userEmail, String password, List<Address> addresses, int patientPriority, String insuranceCode, String insuranceCompany) {
         super(name, username, userEmail, password);
@@ -83,6 +87,13 @@ public class Patient extends User {
         throw new Exception("invalid prescription");
     }
 
+    public void setCurrentReceipt(Receipt currentReceipt) {
+        this.currentReceipt = currentReceipt;
+    }
+
+    public Receipt getCurrentReceipt() {
+        return currentReceipt;
+    }
 
     public TestRequestRecord getCurrentTestRequestRecord() throws Exception {
         if (currentTestRequestRecord == null) {
@@ -91,18 +102,16 @@ public class Patient extends User {
         return currentTestRequestRecord;
     }
 
-    public void setSelectedLabForTests(Lab selectedLab) throws Exception {
-        currentTestRequestRecord.setSelectedLab(selectedLab);
+    public void setSelectedLabForTests(String labName) throws Exception {
+        currentTestRequestRecord.setSelectedLabName(labName);
     }
 
-    public TestRequestRecord confirmTestRequest() throws Exception {
+    public void confirmTestRequest() throws Exception {
         currentTestRequestRecord.confirmRequest();
-        return currentTestRequestRecord;
     }
 
-    public TestRequestRecord setTimeForTest(Date date) throws Exception {
+    public void setTimeForTest(Date date) throws Exception {
         currentTestRequestRecord.setPhlebotomistReferDate(date);
-        return currentTestRequestRecord;
     }
 
     public void setPaymentDone() throws Exception {
@@ -111,5 +120,41 @@ public class Patient extends User {
 
     public int getPatientPriority() {
         return patientPriority;
+    }
+
+    public List<TestDesc> getTestDescList() {
+        return currentTestRequestRecord.getTestDescList();
+    }
+
+    public String getSelectedLabName() {
+        return currentTestRequestRecord.getSelectedLabName();
+    }
+
+    public PhlebotomistInfo getPhlebotomistInfo() {
+        return currentTestRequestRecord.getPhlebotomistInfo();
+    }
+
+    public void verifyTestCorrentness() throws Exception {
+        currentTestRequestRecord.verifyCorrectness();
+    }
+
+    public void setWaitingForPayment() {
+        currentTestRequestRecord.setWaitingForPayment();
+    }
+
+    public PatientTestInfo getInfo() throws Exception {
+        PatientTestInfo patientInfo = new PatientTestInfo();
+        patientInfo.setPatientGeneralInfo(getName(), getPatientPriority(), getPrescriptions());
+        patientInfo.setTestRequestRecordStatus(currentTestRequestRecord.getTestRequestRecordStatus());
+        patientInfo.setTestDescList(currentTestRequestRecord.getTestDescList());
+        return patientInfo;
+    }
+
+    public void setPhlebotomistInfo(PhlebotomistInfo phlebotomistInfo) {
+        currentTestRequestRecord.setPhlebotomistInfo(phlebotomistInfo);
+    }
+
+    public Receipt getTestTotalPrice(boolean insuranceVerified, boolean insuranceSupport, int reductionFactor, List<Double> prices) throws Exception {
+        return currentTestRequestRecord.getTotalPrice(insuranceVerified, insuranceSupport, reductionFactor, prices);
     }
 }

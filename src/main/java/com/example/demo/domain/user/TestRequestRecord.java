@@ -3,6 +3,7 @@ package com.example.demo.domain.user;
 import com.example.demo.domain.externalAPIs.InsuranceAPI;
 import com.example.demo.domain.lab.Lab;
 import com.example.demo.domain.lab.Phlebotomist;
+import com.example.demo.domain.lab.PhlebotomistInfo;
 import com.example.demo.domain.lab.TestDesc;
 import com.example.demo.domain.statusEnums.TestRequestPaymentStatus;
 import com.example.demo.domain.statusEnums.TestRequestRecordStatus;
@@ -15,14 +16,13 @@ import java.util.List;
 
 public class TestRequestRecord {
     private TestRequestRecordStatus testRequestRecordStatus;
-    private Phlebotomist phlebotomist;
-    private String testFollowUpCode;
+    private PhlebotomistInfo phlebotomistInfo;
     private Date phlebotomistReferDate;
     private TestRequestPaymentStatus testRequestPaymentStatus;
     private Address address;
     private List<TestDesc> testDescList;
     private Prescription attachedPrescription;
-    private Lab selectedLab;
+    private String selectedLabName;
 
     TestRequestRecord() {
         testRequestPaymentStatus = TestRequestPaymentStatus.NOT_PAYED;
@@ -33,11 +33,11 @@ public class TestRequestRecord {
         return testRequestRecordStatus;
     }
 
-    public void setSelectedLab(Lab selectedLab) throws Exception {
+    public void setSelectedLabName(String selectedLabName) throws Exception {
         if (!testRequestRecordStatus.equals(TestRequestRecordStatus.TESTS_CONFIRMD)) {
             throw new Exception("incorrect order!");
         }
-        this.selectedLab = selectedLab;
+        this.selectedLabName = selectedLabName;
         testRequestRecordStatus = TestRequestRecordStatus.LAB_SELECTED;
         System.out.println("test's lab have been selected");
     }
@@ -50,29 +50,24 @@ public class TestRequestRecord {
         return testDescList;
     }
 
-    public Phlebotomist getPhlebotomist() {
-        return phlebotomist;
-    }
 
-    public Receipt getTotalPrice(boolean insuranceVerified, String insuranceCompany) throws Exception {
+    public Receipt getTotalPrice(boolean insuranceVerified, boolean insuranceSupport, int reductionFactor, List<Double> prices) throws Exception {
         Receipt receipt = new Receipt();
         double totalPrice = 0;
-        for (TestDesc testDesc: testDescList) {
-            double price = selectedLab.getTestPrice(testDesc);
-            if (insuranceVerified && selectedLab.supportInsurance(insuranceCompany) && testDesc.getInsuranceSupport()) {
-                int reductionFactor = InsuranceAPI.getInsuranceCompanyRedcutionFactor(insuranceCompany);
+        for (int i = 0;i < testDescList.size(); i++) {
+            double price = prices.get(i);
+            if (insuranceVerified && insuranceSupport && testDescList.get(i).getInsuranceSupport()) {
                 price *= (double) (100 - reductionFactor) /100;
             }
             totalPrice += price;
-            receipt.addToReceipt(new ReceiptItem(testDesc.getTestName(), price));
+            receipt.addToReceipt(new ReceiptItem(testDescList.get(i).getTestName(), price));
         }
         receipt.setTotalAmount(totalPrice);
         return receipt;
     }
 
 
-    public double getEstimatedTimeToBeDone() { return 0; }
-    public String getPhlebotomistInfo() { return phlebotomist.getInfo(); }
+    public PhlebotomistInfo getPhlebotomistInfo() { return phlebotomistInfo; }
 
     public void setAddress(Address address) throws Exception {
         if (address == null) {
@@ -129,12 +124,12 @@ public class TestRequestRecord {
         System.out.println("test's info have been confirmed");
     }
 
-    public Lab getSelectedLab() {
-        return selectedLab;
+    public String getSelectedLabName() {
+        return selectedLabName;
     }
 
-    public void setPhlebotomist(Phlebotomist phlebotomist) {
-        this.phlebotomist = phlebotomist;
+    public void setPhlebotomistInfo(PhlebotomistInfo phlebotomistInfo) {
+        this.phlebotomistInfo = phlebotomistInfo;
         testRequestRecordStatus = TestRequestRecordStatus.PHLEBOTOMIST_ASSIGNED;
         System.out.println("phlebotomist have been assigned");
     }

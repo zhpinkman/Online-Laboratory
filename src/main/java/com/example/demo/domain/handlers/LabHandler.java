@@ -2,8 +2,9 @@ package com.example.demo.domain.handlers;
 
 import com.example.demo.domain.externalAPIs.InsuranceCompany;
 import com.example.demo.domain.lab.*;
-import com.example.demo.domain.user.TestRequestRecord;
 import com.example.demo.domain.utility.Address;
+import com.example.demo.domain.utility.FullTestInfo;
+import com.example.demo.domain.utility.PatientTestInfo;
 
 import java.util.*;
 
@@ -60,13 +61,13 @@ public class LabHandler {
         throw new Exception("lab not found");
     }
 
-    public List<Lab> getLabsWithFullSupport(TestRequestRecord testRequestRecord) throws Exception {
+    public List<Lab> getLabsWithFullSupport(List<TestDesc> testDescList) throws Exception {
         if (labList.size() == 0) {
             throw new Exception("no labs available yet");
         }
         List<Lab> labsWithFullSupport = new ArrayList<>();
         for (Lab lab: labList) {
-            if (lab.supportTests(testRequestRecord.getTestDescList())) {
+            if (lab.supportTests(testDescList)) {
                 labsWithFullSupport.add(lab);
             }
         }
@@ -76,12 +77,12 @@ public class LabHandler {
         return labsWithFullSupport;
     }
 
-    public List<LabTest> getLabTests(String labName, TestRequestRecord testRequestRecord) throws Exception {
+    public List<LabTest> getLabTests(String labName, List<TestDesc> testDescList) throws Exception {
         Lab lab = getLab(labName);
-        return lab.getLabTests(testRequestRecord.getTestDescList());
+        return lab.getLabTests(testDescList);
     }
 
-    public List<Date> findRecommendedTimes(TestRequestRecord testRequestRecord) {
+    public List<Date> findRecommendedTimes() {
         Date today = new Date();
         Date tomorrow = new Date();
         Calendar c = Calendar.getInstance();
@@ -91,15 +92,47 @@ public class LabHandler {
         return new ArrayList<>(Arrays.asList(today, tomorrow));
     }
 
-    public PhlebotomistInfo assignPhlebotomistToTest(TestRequestRecord testRequestRecord) throws Exception {
-        Lab lab = testRequestRecord.getSelectedLab();
-        Phlebotomist phlebotomist = lab.assignPhlebotomistToTest();
-        testRequestRecord.setPhlebotomist(phlebotomist);
-        return new PhlebotomistInfo(phlebotomist.getName(), phlebotomist.getInfo());
+    public PhlebotomistInfo assignPhlebotomistToTest(String labName) throws Exception {
+        Lab lab = getLab(labName);
+        return lab.assignPhlebotomistToTest();
     }
 
-    public void prepareKitForRequest(Lab lab, List<TestDesc> testDescList) {
+    public void prepareKitForRequest(String labName, List<TestDesc> testDescList) throws Exception {
+        Lab lab = getLab(labName);
         lab.prepareKit(testDescList);
     }
 
+    public FullTestInfo getFullTestInfo(String labName, List<LabTest> labTestList) throws Exception {
+        Lab lab = getLab(labName);
+        FullTestInfo fullTestInfo = new FullTestInfo();
+        fullTestInfo.setLabName(lab.getName());
+        fullTestInfo.setLabTestList(labTestList);
+        fullTestInfo.setInsuranceCompanies(lab.getSupportedInsurancesNames());
+        return fullTestInfo;
+    }
+
+    public List<FullTestInfo> getLabsWithFullSupportInfo(List<TestDesc> testDescList) throws Exception {
+        List<FullTestInfo> fullTestInfos = new ArrayList<>();
+        List<Lab> labList = getLabsWithFullSupport(testDescList);
+        for (Lab lab: labList) {
+            fullTestInfos.add(getFullTestInfo(lab.getName(), getLabTests(lab.getName(), testDescList)));
+        }
+        return fullTestInfos;
+    }
+
+    public void addTestToPhlebotomistSchedule(PhlebotomistInfo phlebotomistInfo, PatientTestInfo patientInfo) throws Exception {
+        Phlebotomist phlebotomist = getPhlebotomist(phlebotomistInfo);
+        phlebotomist.addTestRecordToList(patientInfo);
+    }
+
+    private Phlebotomist getPhlebotomist(PhlebotomistInfo phlebotomistInfo) throws Exception {
+        String labName = phlebotomistInfo.getLabName();
+        Lab lab = getLab(labName);
+        return lab.getPhlebotomist(phlebotomistInfo.getName());
+    }
+
+    public List<Double> getTestPrices(String labName, List<TestDesc> testDescs) throws Exception {
+        Lab lab = getLab(labName);
+        return lab.getTestPrices(testDescs);
+    }
 }

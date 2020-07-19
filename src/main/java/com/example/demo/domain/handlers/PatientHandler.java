@@ -2,8 +2,7 @@ package com.example.demo.domain.handlers;
 
 import com.example.demo.domain.externalAPIs.BankAPI;
 import com.example.demo.domain.externalAPIs.InsuranceAPI;
-import com.example.demo.domain.lab.Lab;
-import com.example.demo.domain.lab.Phlebotomist;
+import com.example.demo.domain.lab.PhlebotomistInfo;
 import com.example.demo.domain.lab.TestDesc;
 import com.example.demo.domain.statusEnums.PrescriptionStatus;
 import com.example.demo.domain.user.Patient;
@@ -74,74 +73,71 @@ public class PatientHandler {
         patient.attachPrescriptionToTest(prescriptionId);
     }
 
-    public TestRequestRecord verifyPatientTestRequest(String patientEmail) throws Exception {
+    public void verifyPatientTestRequest(String patientEmail) throws Exception {
         Patient patient = getPatient(patientEmail);
-        TestRequestRecord testRequestRecord = patient.getCurrentTestRequestRecord();
-        testRequestRecord.verifyCorrectness();
-        return testRequestRecord;
+        patient.verifyTestCorrentness();
     }
 
-    public TestRequestRecord setSelectedLabForTests(String patientEmail, Lab selectedLab) throws Exception {
+    public void setSelectedLabForTests(String patientEmail, String selectedLabNam) throws Exception {
         Patient patient = getPatient(patientEmail);
-        patient.setSelectedLabForTests(selectedLab);
-        return patient.getCurrentTestRequestRecord();
+        patient.setSelectedLabForTests(selectedLabNam);
     }
 
-    public TestRequestRecord confirmTestRequest(String patientEmail) throws Exception {
+    public void confirmTestRequest(String patientEmail) throws Exception {
         Patient patient = getPatient(patientEmail);
-        return patient.confirmTestRequest();
+        patient.confirmTestRequest();
     }
 
-    public TestRequestRecord setTimeForTest(String patientEmail, Date date) throws Exception {
+    public void setTimeForTest(String patientEmail, Date date) throws Exception {
         Patient patient = getPatient(patientEmail);
-        return patient.setTimeForTest(date);
+        patient.setTimeForTest(date);
     }
 
-    public Receipt getTotalPrice(String patientEmail) throws Exception {
+    public Receipt getTotalPrice(String patientEmail, List<Double> prices) throws Exception {
         Patient patient = getPatient(patientEmail);
         boolean insuranceVerified = InsuranceAPI.verifyCode(patient.getInsuranceCode());
-        TestRequestRecord testRequestRecord = patient.getCurrentTestRequestRecord();
-        return testRequestRecord.getTotalPrice(insuranceVerified, patient.getInsuranceCompany());
+        int reductionFactor = InsuranceAPI.getInsuranceCompanyRedcutionFactor(patient.getInsuranceCompany());
+        boolean insuranceSupport = InsuranceAPI.SupportsLab(patient.getSelectedLabName(), patient.getInsuranceCompany());
+        Receipt receipt = patient.getTestTotalPrice(insuranceVerified, insuranceSupport, reductionFactor, prices);
+        return receipt;
     }
 
     public void confirmPaymentReceipt(String patientEmail) throws Exception {
         Patient patient = getPatient(patientEmail);
-        double amountToPay = getTotalPrice(patientEmail).getTotalAmount();
+        double amountToPay = patient.getCurrentReceipt().getTotalAmount();
         PaymentReceipt paymentReceipt = new PaymentReceipt(amountToPay);
         BankAPI.verifyPayment(paymentReceipt);
         patient.setPaymentDone();
     }
 
-    public Lab getSelectedLab(String patientEmail) throws Exception {
-        Patient patient = getPatient(patientEmail);
-        TestRequestRecord testRequestRecord = patient.getCurrentTestRequestRecord();
-        return testRequestRecord.getSelectedLab();
-    }
 
     public List<TestDesc> getTestDescList(String patientEmail) throws Exception {
         Patient patient = getPatient(patientEmail);
-        TestRequestRecord testRequestRecord = patient.getCurrentTestRequestRecord();
-        return testRequestRecord.getTestDescList();
+        return patient.getTestDescList();
     }
 
     public PatientTestInfo getPatientInfo(String patientEmail) throws Exception {
-        PatientTestInfo patientInfo = new PatientTestInfo();
         Patient patient = getPatient(patientEmail);
-        patientInfo.setPatientGeneralInfo(patient.getName(), patient.getPatientPriority(), patient.getPrescriptions());
-        TestRequestRecord testRequestRecord = patient.getCurrentTestRequestRecord();
-        patientInfo.setTestRequestRecord(testRequestRecord);
-        return patientInfo;
+        return patient.getInfo();
     }
 
-    public Phlebotomist getPatientsCurrentTestPhlebotomist(String patientEmail) throws Exception {
+    public PhlebotomistInfo getPatientsCurrentTestPhlebotomist(String patientEmail) throws Exception {
         Patient patient = getPatient(patientEmail);
-        TestRequestRecord testRequestRecord = patient.getCurrentTestRequestRecord();
-        return testRequestRecord.getPhlebotomist();
+        return patient.getPhlebotomistInfo();
     }
 
     public void setWaitingForPayment(String patientEmail) throws Exception {
         Patient patient = getPatient(patientEmail);
-        TestRequestRecord testRequestRecord = patient.getCurrentTestRequestRecord();
-        testRequestRecord.setWaitingForPayment();
+        patient.setWaitingForPayment();
+    }
+
+    public String getSelectedLabName(String patientEmail) throws Exception {
+        Patient patient = getPatient(patientEmail);
+        return patient.getSelectedLabName();
+    }
+
+    public void setPhlebotomistInfo(String patientEmail, PhlebotomistInfo phlebotomistInfo) throws Exception {
+        Patient patient = getPatient(patientEmail);
+        patient.setPhlebotomistInfo(phlebotomistInfo);
     }
 }

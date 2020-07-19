@@ -78,14 +78,6 @@ public class Lab {
         return labTestList;
     }
 
-    public boolean supportInsurance(String insuranceCompanyName) {
-        for (InsuranceCompany insuranceCompany: supportedInsurances) {
-            if (insuranceCompany.namesMatches(insuranceCompanyName)) {
-                return true;
-            }
-        }
-        return false;
-    }
 
     public double getTestPrice(TestDesc testDesc) throws Exception {
         for (LabTest labTest: labTests) {
@@ -100,7 +92,7 @@ public class Lab {
         labRepositories.prepareKit(testDescList);
     }
 
-    public Phlebotomist assignPhlebotomistToTest() throws Exception {
+    public PhlebotomistInfo assignPhlebotomistToTest() throws Exception {
         if (phlebotomistList.size() == 0) {
             throw new Exception("there are no phlebotomists available!!");
         }
@@ -112,7 +104,7 @@ public class Lab {
                 lessOccupiedPhlebotomist = phlebotomist;
             }
         }
-        return lessOccupiedPhlebotomist;
+        return new PhlebotomistInfo(lessOccupiedPhlebotomist.getName(), lessOccupiedPhlebotomist.getInfo(), name);
     }
 
 
@@ -122,5 +114,21 @@ public class Lab {
             insuranceCompanyNames.add(insuranceCompany.getCompanyName());
         }
         return insuranceCompanyNames;
+    }
+
+    public Phlebotomist getPhlebotomist(String name) throws Exception {
+        for (Phlebotomist phlebotomist: phlebotomistList) {
+            if (phlebotomist.getName().equals(name))
+                return phlebotomist;
+        }
+        throw new Exception("phlebotomist not found");
+    }
+
+    public List<Double> getTestPrices(List<TestDesc> testDescs) throws Exception {
+        List<Double> prices = new ArrayList<>();
+        for (TestDesc testDesc: testDescs) {
+            prices.add(getTestPrice(testDesc));
+        }
+        return prices;
     }
 }

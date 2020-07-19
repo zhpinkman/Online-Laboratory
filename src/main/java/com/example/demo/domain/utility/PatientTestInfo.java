@@ -1,7 +1,7 @@
 package com.example.demo.domain.utility;
 
+import com.example.demo.domain.lab.TestDesc;
 import com.example.demo.domain.user.Prescription;
-import com.example.demo.domain.user.TestRequestRecord;
 import com.example.demo.domain.statusEnums.TestRequestRecordStatus;
 
 import java.util.List;
@@ -10,7 +10,8 @@ public class PatientTestInfo {
     private String name;
     private int patientPriority;
     private List<Prescription> prescriptions;
-    private TestRequestRecord testRequestRecord;
+    private List<TestDesc> testDescList;
+    private TestRequestRecordStatus testRequestRecordStatus;
 
     public void setPatientGeneralInfo(String name, int patientPriority, List<Prescription> prescriptions) {
         this.name = name;
@@ -18,13 +19,17 @@ public class PatientTestInfo {
         this.prescriptions = prescriptions;
     }
 
-    public void setTestRequestRecord(TestRequestRecord testRequestRecord) {
-        this.testRequestRecord = testRequestRecord;
+    public void setTestRequestRecordStatus(TestRequestRecordStatus testRequestRecordStatus) {
+        this.testRequestRecordStatus = testRequestRecordStatus;
+    }
+
+    public void setTestDescList(List<TestDesc> testDescList) {
+        this.testDescList = testDescList;
     }
 
     public int getWork() {
-        if (testRequestRecord.getTestRequestRecordStatus().equals(TestRequestRecordStatus.TEST_DELIVERED))
+        if (testRequestRecordStatus.equals(TestRequestRecordStatus.TEST_DELIVERED))
             return 0;
-        return testRequestRecord.getTestDescList().size();
+        return testDescList.size();
     }
 }
