@@ -100,7 +100,7 @@ public class Lab {
         labRepositories.prepareKit(testDescList);
     }
 
-    public PhlebotomistInfo assignPhlebotomistToTest(TestRequestRecord testRequestRecord) throws Exception {
+    public Phlebotomist assignPhlebotomistToTest() throws Exception {
         if (phlebotomistList.size() == 0) {
             throw new Exception("there are no phlebotomists available!!");
         }
@@ -112,8 +112,7 @@ public class Lab {
                 lessOccupiedPhlebotomist = phlebotomist;
             }
         }
-        testRequestRecord.setPhlebotomist(lessOccupiedPhlebotomist);
-        return new PhlebotomistInfo(lessOccupiedPhlebotomist.getName(), lessOccupiedPhlebotomist.getInfo());
+        return lessOccupiedPhlebotomist;
     }
 
 

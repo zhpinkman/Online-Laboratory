@@ -93,7 +93,9 @@ public class LabHandler {
 
     public PhlebotomistInfo assignPhlebotomistToTest(TestRequestRecord testRequestRecord) throws Exception {
         Lab lab = testRequestRecord.getSelectedLab();
-        return lab.assignPhlebotomistToTest(testRequestRecord);
+        Phlebotomist phlebotomist = lab.assignPhlebotomistToTest();
+        testRequestRecord.setPhlebotomist(phlebotomist);
+        return new PhlebotomistInfo(phlebotomist.getName(), phlebotomist.getInfo());
     }
 
     public void prepareKitForRequest(Lab lab, List<TestDesc> testDescList) {

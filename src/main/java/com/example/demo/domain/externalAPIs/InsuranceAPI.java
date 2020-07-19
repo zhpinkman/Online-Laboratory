@@ -1,6 +1,5 @@
 package com.example.demo.domain.externalAPIs;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
