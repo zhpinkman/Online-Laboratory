@@ -99,6 +99,7 @@ public class PatientHandler {
         int reductionFactor = InsuranceAPI.getInsuranceCompanyRedcutionFactor(patient.getInsuranceCompany());
         boolean insuranceSupport = InsuranceAPI.SupportsLab(patient.getSelectedLabName(), patient.getInsuranceCompany());
         Receipt receipt = patient.getTestTotalPrice(insuranceVerified, insuranceSupport, reductionFactor, prices);
+        patient.setCurrentReceipt(receipt);
         return receipt;
     }
 
