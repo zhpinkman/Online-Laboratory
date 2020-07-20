@@ -9,11 +9,11 @@ import java.util.List;
 public class PatientTestInfo {
     private String name;
     private int patientPriority;
-    private List<Prescription> prescriptions;
+    private Prescription prescriptions;
     private List<TestDesc> testDescList;
     private TestRequestRecordStatus testRequestRecordStatus;
 
-    public void setPatientGeneralInfo(String name, int patientPriority, List<Prescription> prescriptions) {
+    public void setPatientGeneralInfo(String name, int patientPriority, Prescription prescriptions) {
         this.name = name;
         this.patientPriority = patientPriority;
         this.prescriptions = prescriptions;

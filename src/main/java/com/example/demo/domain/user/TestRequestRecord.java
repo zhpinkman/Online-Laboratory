@@ -153,4 +153,8 @@ public class TestRequestRecord {
     public void setWaitingForPayment() {
         testRequestRecordStatus = TestRequestRecordStatus.WAITING_FOR_PAYMENT;
     }
+
+    public Prescription getPrescription() {
+        return attachedPrescription;
+    }
 }

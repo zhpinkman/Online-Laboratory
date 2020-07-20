@@ -144,10 +144,14 @@ public class Patient extends User {
 
     public PatientTestInfo getInfo() throws Exception {
         PatientTestInfo patientInfo = new PatientTestInfo();
-        patientInfo.setPatientGeneralInfo(getName(), getPatientPriority(), getPrescriptions());
+        patientInfo.setPatientGeneralInfo(getName(), getPatientPriority(), getCurrentTestPrescription());
         patientInfo.setTestRequestRecordStatus(currentTestRequestRecord.getTestRequestRecordStatus());
         patientInfo.setTestDescList(currentTestRequestRecord.getTestDescList());
         return patientInfo;
+    }
+
+    private Prescription getCurrentTestPrescription() {
+        return currentTestRequestRecord.getPrescription();
     }
 
     public void setPhlebotomistInfo(PhlebotomistInfo phlebotomistInfo) {
