@@ -1,0 +1,192 @@
+https://mermaid-js.github.io/mermaid-live-editor/#/view/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtXG5cdEludGVyZmFjZS0-PitNekxhYjogZ2V0SW5zdGFuY2Vcblx0TXpMYWItPj4rTXpMYWI6IDw8Y3JlYXRlPj5cblx0TXpMYWItLT4-SW50ZXJmYWNlOiAuXG5cblx0SW50ZXJmYWNlLT4-K016TGFiOiBnZXRBbGxUZXN0c1xuXHRNekxhYi0tPj5JbnRlcmZhY2U6IC5cblxuXHRJbnRlcmZhY2UtPj4rTXpMYWI6IGdldFJldmlld2VkUHJlc2NyaXB0aW9uc1xuXHRNekxhYi0-PitQYXRpZW50SGFuZGxlcjogZ2V0UmV2aWV3ZWRQcmVzY3JpdGlvbnNcblx0UGF0aWVudEhhbmRsZXItPj4rUGF0aWVudEhhbmRsZXI6IGdldFBhdGllbnRcblx0UGF0aWVudEhhbmRsZXItPj5Vc2VyOiBlbWFpbHNNYXRjaFxuXHRVc2VyLS0-PlBhdGllbnRIYW5kbGVyOiAuXG5cdFBhdGllbnRIYW5kbGVyLT4-UGF0aWVudDogZ2V0UHJlc2NyaXB0aW9uc1xuXHRQYXRpZW50LS0-PlBhdGllbnRIYW5kbGVyOiAuXG5cdFBhdGllbnRIYW5kbGVyLT4-UHJlc2NyaXB0aW9uOiBnZXRQcmVzY3JpcHRpb25TdGF0dXNcblx0UHJlc2NyaXB0aW9uLS0-PlBhdGllbnRIYW5kbGVyOiAuXG5cdFBhdGllbnRIYW5kbGVyLS0-PitNekxhYjogLlxuXHRNekxhYi0tPj4rSW50ZXJmYWNlOiAuXG5cblx0SW50ZXJmYWNlLT4-K016TGFiOnNldFBhdGllbnRUZXN0c1xuXHRMb29wXG5cdFx0TXpMYWItPj5UZXN0RGVzYzogZ2V0VGVzdEJ5TmFtZVxuXHRcdFRlc3REZXNjLT4-TXpMYWI6IC5cblx0ZW5kXG5cdE16TGFiLT4-UGF0aWVudEhhbmRsZXI6IHNldFBhdGllbnRzVGVzdFxuXHRQYXRpZW50SGFuZGxlci0-PlBhdGllbnQ6IHNldFRlc3RzXG5cdFBhdGllbnQtPj4rVGVzdFJlcXVlc3RSZWNvcmQ6IDw8Y3JlYXRlPj5cblx0VGVzdFJlcXVlc3RSZWNvcmQtLT4-UGF0aWVudDogLlxuXHRQYXRpZW50LT4-K1Rlc3RSZXF1ZXN0UmVjb3JkOiBzZXRUZXN0RGVzY0xpc3Rcblx0VGVzdFJlcXVlc3RSZWNvcmQtLT4-UGF0aWVudDogLlxuXHRQYXRpZW50LS0-PlBhdGllbnRIYW5kbGVyOiAuXG5cdFBhdGllbnRIYW5kbGVyLS0-Pk16TGFiOiAuXG5cdE16TGFiLS0-PkludGVyZmFjZTogLlxuXG5cdEludGVyZmFjZS0-PitNekxhYjogZ2V0UGF0aWVudEFkZHJlc3Nlc1xuXHRNekxhYi0-PlBhdGllbnRIYW5kbGVyOiBnZXRQYXRpZW50QWRkcmVzc2VzXG5cdFBhdGllbnRIYW5kbGVyLT4-UGF0aWVudDogZ2V0QWRkcmVzc2VzXG5cdFBhdGllbnQtLT4-UGF0aWVudEhhbmRsZXI6IC5cblx0UGF0aWVudEhhbmRsZXItLT4-TXpMYWI6IC5cblx0TXpMYWItLT4-SW50ZXJmYWNlOiAuXG5cblxuXHRJbnRlcmZhY2UtPj4rTXpMYWI6IHNldFBhdGllbnRUZXN0QWRkcmVzc1xuXHRNekxhYi0-PlBhdGllbnRIYW5kbGVyOiBzZXRUZXN0UmVjb3JkUmVxdWVzdEFkZHJlc3Ncblx0UGF0aWVudEhhbmRsZXItPj5QYXRpZW50OiBzZXRUZXN0UmVjb3JkUmVxdWVzdEFkZHJlc3Ncblx0UGF0aWVudC0-PlRlc3RSZXF1ZXN0UmVjb3JkOiBzZXRBZGRyZXNzXG5cdFRlc3RSZXF1ZXN0UmVjb3JkLS0-PlBhdGllbnQ6IC5cblx0UGF0aWVudC0tPj5QYXRpZW50SGFuZGxlcjogLlxuXHRQYXRpZW50SGFuZGxlci0tPj5NekxhYjogLlxuXHRNekxhYi0tPj5JbnRlcmZhY2U6IC5cblxuXHRJbnRlcmZhY2UtPj4rTXpMYWI6IGF0dGFjaFByZXNjcmlwdGlvblRvVGVzdFxuXHRNekxhYi0-PlBhdGllbnRIYW5kbGVyOiBhdHRhY2hQcmVzY3JpcHRpb25Ub1Rlc3Rcblx0UGF0aWVudEhhbmRsZXItPj5QYXRpZW50OiBhdHRhY2hQcmVzY3JpcHRpb25Ub1Rlc3Rcblx0UGF0aWVudC0-PitQcmVzaWNyaXB0aW9uOiBnZXRQcmVzY3JpcHRpb25TdGF0dXNcblx0UHJlc2ljcmlwdGlvbi0tPj5QYXRpZW50OiAuXG5cdFBhdGllbnQtPj5UZXN0UmVxdWVzdFJlY29yZDogYXR0YWNoUHJlc2NyaXB0aW9uXG5cdFRlc3RSZXF1ZXN0UmVjb3JkLS0-PlBhdGllbnQ6IC5cblx0UGF0aWVudC0tPj5QYXRpZW50SGFuZGxlcjogLlxuXHRQYXRpZW50SGFuZGxlci0tPj5NekxhYjogLlxuXHRNekxhYi0tPj5JbnRlcmZhY2U6IC5cblxuXHRJbnRlcmZhY2UtPj4rTXpMYWI6IHZlcmlmeVBhdGllbnRUZXN0UmVxdWVzdFxuXG5cdE16TGFiLT4-UGF0aWVudEhhbmRsZXI6IHZlcmlmeVBhdGllbnRUZXN0UmVxdWVzdFxuXHRQYXRpZW50SGFuZGxlci0-PlBhdGllbnQ6IHZlcmlmeVRlc3RDb3JyZW50bmVzc1xuXHRQYXRpZW50LT4-K1Rlc3RSZXF1ZXN0UmVjb3JkOiB2ZXJpZnlDb3JyZWN0bmVzc1xuXHRUZXN0UmVxdWVzdFJlY29yZC0tPj5QYXRpZW50OiAuXG5cdFBhdGllbnQtLT4-UGF0aWVudEhhbmRsZXI6IC5cblx0UGF0aWVudEhhbmRsZXItLT4-TXpMYWI6IC5cblx0TXpMYWItPj5MYWJIYW5kbGVyOiBnZXRMYWJzV2l0aEZ1bGxTdXBwb3J0SW5mb1xuXHRMYWJIYW5kbGVyLT4-TGFiOiBzdXBwb3J0VGVzdHNcblx0TG9vcFxuXHRcdExhYi0-PkxhYlRlc3Q6IG1hdGNoZXNcblx0XHRMYWJUZXN0LS0-PkxhYjogLlxuXHRlbmRcblx0TGFiSGFuZGxlci0-PkxhYjpnZXROYW1lXG5cdExhYi0tPj5MYWJIYW5kbGVyOiAuXG5cdExhYkhhbmRsZXItPj5GdWxsVGVzdEluZm86IHNldExhYk5hbWVcblx0RnVsbFRlc3RJbmZvLS0-PkxhYkhhbmRsZXI6IC5cblx0TGFiSGFuZGxlci0-PkZ1bGxUZXN0SW5mbzogc2V0TGFiVGVzdExpc3Rcblx0RnVsbFRlc3RJbmZvLS0-PkxhYkhhbmRsZXI6IC5cblx0TGFiSGFuZGxlci0-PkxhYjogZ2V0U3VwcG9ydGVkSW5zdXJhbmNlc05hbWVzXG5cdExhYi0-Pkluc3VyYW5jZUNvbXBhbnk6IGdldENvbXBhbnlOYW1lXG5cdEluc3VyYW5jZUNvbXBhbnktLT4-TGFiOiAuXG5cdExhYi0tPj5MYWJIYW5kbGVyOiAuXG5cdExhYkhhbmRsZXItPj5GdWxsVGVzdEluZm86IHNldEluc3VyYW5jZUNvbXBhbmllc1xuXHRGdWxsVGVzdEluZm8tLT4-TGFiSGFuZGxlcjogLlxuXHRMYWJIYW5kbGVyLS0-Pk16TGFiOiAuXG5cdE16TGFiLS0-PkludGVyZmFjZTogLlxuXG5cdEludGVyZmFjZS0-PitNekxhYjogc2V0U2VsZWN0ZWRMYWJGb3JUZXN0c1xuXHRNekxhYi0-PlBhdGllbnRIYW5kbGVyOiBzZXRTZWxlY3RlZExhYkZvclRlc3RzXG5cdFBhdGllbnRIYW5kbGVyLT4-UGF0aWVudDogc2V0U2VsZWN0ZWRMYWJGb3JUZXN0c1xuXHRQYXRpZW50LT4-VGVzdFJlcXVlc3RSZWNvcmQ6IHNldFNlbGVjdGVkTGFiTmFtZVxuXHRUZXN0UmVxdWVzdFJlY29yZC0tPj5QYXRpZW50OiAuXG5cdFBhdGllbnQtLT4-UGF0aWVudEhhbmRsZXI6IC5cblx0UGF0aWVudEhhbmRsZXItLT4-TXpMYWI6IC5cblx0TXpMYWItPj5MYWJIYW5kbGVyOiBnZXRGdWxsVGVzdEluZm9cblx0TGFiSGFuZGxlci0tPj5NekxhYjogLlxuXHRNekxhYi0tPj5JbnRlcmZhY2U6IC5cblxuXHRJbnRlcmZhY2UtPj4rTXpMYWI6IGNvbmZpcm1UZXN0SW5mb1xuXHRNekxhYi0-PlBhdGllbnRIYW5kbGVyOiBjb25maXJtVGVzdFJlcXVlc3Rcblx0UGF0aWVudEhhbmRsZXItPj5QYXRpZW50OiBjb25maXJtVGVzdFJlcXVlc3Rcblx0UGF0aWVudC0-PlRlc3RSZXF1ZXN0UmVjb3JkOiBjb25maXJtUmVxdWVzdFxuXHRUZXN0UmVxdWVzdFJlY29yZC0tPj5QYXRpZW50OiAuXG5cdFBhdGllbnQtLT4-UGF0aWVudEhhbmRsZXI6IC5cblx0UGF0aWVudEhhbmRsZXItLT4-TXpMYWI6IC5cblx0TXpMYWItPj5MYWJIYW5kbGVyOiBmaW5kUmVjb21tZW5kZWRUaW1lc1xuXHRMYWJIYW5kbGVyLS0-Pk16TGFiOiAuXG5cdE16TGFiLS0-PkludGVyZmFjZTogLlxuXG5cdEludGVyZmFjZS0-PitNekxhYjogc2VsZWN0VGltZUZvclRlc3Rcblx0TXpMYWItPj5QYXRpZW50SGFuZGxlcjogc2V0VGltZUZvclRlc3Rcblx0UGF0aWVudEhhbmRsZXItPj5QYXRpZW50OiBzZXRUaW1lRm9yVGVzdFxuXHRQYXRpZW50LT4-VGVzdFJlcXVlc3RSZWNvcmQ6IHNldFBobGVib3RvbWlzdFJlZmVyRGF0ZVxuXHRUZXN0UmVxdWVzdFJlY29yZC0tPj5QYXRpZW50OiAuXG5cdFBhdGllbnQtLT4-UGF0aWVudEhhbmRsZXI6IC5cblx0UGF0aWVudEhhbmRsZXItLT4-TXpMYWI6IC5cblxuXHRNekxhYi0-PkxhYkhhbmRsZXI6IGFzc2lnblBobGVib3RvbWlzdFRvVGVzdFxuXHRMYWJIYW5kbGVyLT4-K0xhYjogYXNzaWduUGhsZWJvdG9taXN0VG9UZXN0XG5cdExvb3Bcblx0XHRMYWItPj4rUGhsZWJvdG9taXN0OiBnZXRBbW91bnRPZldvcmtcblx0XHRQaGxlYm90b21pc3QtPj5QYXRpZW50VGVzdEluZm86IGdldFdvcmtcblx0XHRQYXRpZW50VGVzdEluZm8tLT4-UGhsZWJvdG9taXN0OiAuXG5cdFx0UGhsZWJvdG9taXN0LS0-PkxhYjogLlxuXHRlbmRcblx0TGFiLT4-K1BobGVib3RvbWlzdDogZ2V0SW5mb1xuXHRQaGxlYm90b21pc3QtLT4-TGFiOiAuXG5cdExhYi0-PlBobGVib3RvbWlzdEluZm86IDw8Y3JlYXRlPj5cblx0UGhsZWJvdG9taXN0SW5mby0tPj5MYWI6IC5cblx0TGFiLS0-PkxhYkhhbmRsZXI6IC5cblx0TGFiSGFuZGxlci0tPj5NekxhYjogLlxuXHRNekxhYi0tPj5JbnRlcmZhY2U6IC5cblxuXHRJbnRlcmZhY2UtPj4rTXpMYWI6IGdldFJlY2VpcHRcblx0TXpMYWItPj5QYXRpZW50SGFuZGxlcjogZ2V0VGVzdERlc2NMaXN0XG5cdFBhdGllbnRIYW5kbGVyLT4-UGF0aWVudDogZ2V0VGVzdERlc2NMaXN0XG5cdFBhdGllbnQtPj5UZXN0UmVxdWVzdFJlY29yZDogZ2V0VGVzdERlc2NMaXN0XG5cdFRlc3RSZXF1ZXN0UmVjb3JkLS0-PlBhdGllbnQ6IC5cblx0UGF0aWVudC0tPj5QYXRpZW50SGFuZGxlcjogLlxuXHRQYXRpZW50SGFuZGxlci0tPj5NekxhYjogLlxuXHRNekxhYi0-PitMYWJIYW5kbGVyOiBnZXRUZXN0UHJpY2VzXG5cdExhYkhhbmRsZXItPj4rTGFiOiBnZXRUZXN0UHJpY2VzXG5cdExhYi0tPj5MYWJIYW5kbGVyOiAuXG5cdExhYkhhbmRsZXItLT4-TXpMYWI6IC5cblx0XG5cdE16TGFiLT4-K1BhdGllbnRIYW5kbGVyOiBnZXRUb3RhbFByaWNlXG5cdFBhdGllbnRIYW5kbGVyLT4-UGF0aWVudDogZ2V0SW5zdXJhbmNlQ29kZVxuXHRQYXRpZW50LS0-PlBhdGllbnRIYW5kbGVyOiAuXG5cdFBhdGllbnRIYW5kbGVyLT4-SW5zdXJhbmNlQVBJOiB2ZXJpZnlDb2RlXG5cdEluc3VyYW5jZUFQSS0tPj5QYXRpZW50SGFuZGxlcjogLlxuXHRQYXRpZW50SGFuZGxlci0-Pkluc3VyYW5jZUFQSTogZ2V0SW5zdXJhbmNlQ29tcGFueVJlZGN1dGlvbkZhY3RvclxuXHRJbnN1cmFuY2VBUEktLT4-UGF0aWVudEhhbmRsZXI6IC5cblx0UGF0aWVudEhhbmRsZXItPj5JbnN1cmFuY2VBUEk6IFN1cHBvcnRzTGFiXG5cdEluc3VyYW5jZUFQSS0tPj5QYXRpZW50SGFuZGxlcjogLlxuXG5cdFBhdGllbnRIYW5kbGVyLT4-UGF0aWVudDogZ2V0VGVzdFRvdGFsUHJpY2Vcblx0UGF0aWVudC0-PitUZXN0UmVxdWVzdFJlY29yZDogZ2V0VGVzdFRvdGFsUHJpY2Vcblx0VGVzdFJlcXVlc3RSZWNvcmQtPj5SZWNlaXB0SXRlbTogPDxjcmVhdGU-PlxuXHRSZWNlaXB0SXRlbS0tPj5UZXN0UmVxdWVzdFJlY29yZDogLlxuXHRUZXN0UmVxdWVzdFJlY29yZC0-PlJlY2VpcHQ6IGFkZFRvUmVjZWlwdFxuXHRSZWNlaXB0LS0-PlRlc3RSZXF1ZXN0UmVjb3JkOiAuXG5cdFRlc3RSZXF1ZXN0UmVjb3JkLS0-PlBhdGllbnQ6IC5cblx0UGF0aWVudC0tPj5QYXRpZW50SGFuZGxlcjogLlxuXHRQYXRpZW50SGFuZGxlci0tPj5NekxhYjogLlxuXHRNekxhYi0tPj5JbnRlcmZhY2U6IC5cblxuXHRJbnRlcmZhY2UtPj4rTXpMYWI6IGNvbmZpcm1QYXltZW50UmVjZWlwdFxuXHRNekxhYi0-PlBhdGllbnRIYW5kbGVyOiBjb25maXJtUGF5bWVudFJlY2VpcHRcblx0UGF0aWVudEhhbmRsZXItPj5QYXltZW50UmVjaXB0OiA8PGNyZWF0ZT4-IFxuXHRQYXltZW50UmVjaXB0LT4-K1BhdGllbnRIYW5kbGVyOiAuXG5cdFBhdGllbnRIYW5kbGVyLT4-QmFua0FQSTogdmVyaWZ5UGF5bWVudFxuXHRCYW5rQVBJLT4-K1BhdGllbnRIYW5kbGVyOiAuXG5cdFBhdGllbnRIYW5kbGVyLS0-Pk16TGFiOiAuXG5cblx0TXpMYWItPj4rTGFiSGFuZGxlcjogYWRkVGVzdFRvUGhsZWJvdG9taXN0U2NoZWR1bGVcblx0TGFiSGFuZGxlci0tPj5NekxhYjogLlxuXG5cdE16TGFiLT4-K0xhYkhhbmRsZXI6IHByZXBhcmVLaXRGb3JSZXF1ZXN0XG5cdExhYkhhbmRsZXItPj5MYWI6IHByZXBhcmVLaXRcblx0TGFiLT4-K0xhYlJlcG9zaXRvcnk6IHByZXBhcmVLaXRcblx0TGFiUmVwb3NpdG9yeS0tPj5MYWI6IC5cblx0TGFiLS0-PkxhYkhhbmRsZXI6IC5cblx0TGFiSGFuZGxlci0tPj5NekxhYjogLlxuXG5cdE16TGFiLS0-PkludGVyZmFjZTogLiIsIm1lcm1haWQiOnsidGhlbWUiOiJkZWZhdWx0In0sInVwZGF0ZUVkaXRvciI6ZmFsc2V9
+
+sequenceDiagram
+	Interface->>+MzLab: getInstance
+	MzLab->>+MzLab: <<create>>
+	MzLab-->>Interface: .
+
+	Interface->>+MzLab: getAllTests
+	MzLab-->>Interface: .
+
+	Interface->>+MzLab: getReviewedPrescriptions
+	MzLab->>+PatientHandler: getReviewedPrescritions
+	PatientHandler->>+PatientHandler: getPatient
+	PatientHandler->>User: emailsMatch
+	User-->>PatientHandler: .
+	PatientHandler->>Patient: getPrescriptions
+	Patient-->>PatientHandler: .
+	PatientHandler->>Prescription: getPrescriptionStatus
+	Prescription-->>PatientHandler: .
+	PatientHandler-->>+MzLab: .
+	MzLab-->>+Interface: .
+
+	Interface->>+MzLab:setPatientTests
+	Loop
+		MzLab->>TestDesc: getTestByName
+		TestDesc->>MzLab: .
+	end
+	MzLab->>PatientHandler: setPatientsTest
+	PatientHandler->>Patient: setTests
+	Patient->>+TestRequestRecord: <<create>>
+	TestRequestRecord-->>Patient: .
+	Patient->>+TestRequestRecord: setTestDescList
+	TestRequestRecord-->>Patient: .
+	Patient-->>PatientHandler: .
+	PatientHandler-->>MzLab: .
+	MzLab-->>Interface: .
+
+	Interface->>+MzLab: getPatientAddresses
+	MzLab->>PatientHandler: getPatientAddresses
+	PatientHandler->>Patient: getAddresses
+	Patient-->>PatientHandler: .
+	PatientHandler-->>MzLab: .
+	MzLab-->>Interface: .
+
+
+	Interface->>+MzLab: setPatientTestAddress
+	MzLab->>PatientHandler: setTestRecordRequestAddress
+	PatientHandler->>Patient: setTestRecordRequestAddress
+	Patient->>TestRequestRecord: setAddress
+	TestRequestRecord-->>Patient: .
+	Patient-->>PatientHandler: .
+	PatientHandler-->>MzLab: .
+	MzLab-->>Interface: .
+
+	Interface->>+MzLab: attachPrescriptionToTest
+	MzLab->>PatientHandler: attachPrescriptionToTest
+	PatientHandler->>Patient: attachPrescriptionToTest
+	Patient->>+Presicription: getPrescriptionStatus
+	Presicription-->>Patient: .
+	Patient->>TestRequestRecord: attachPrescription
+	TestRequestRecord-->>Patient: .
+	Patient-->>PatientHandler: .
+	PatientHandler-->>MzLab: .
+	MzLab-->>Interface: .
+
+	Interface->>+MzLab: verifyPatientTestRequest
+
+	MzLab->>PatientHandler: verifyPatientTestRequest
+	PatientHandler->>Patient: verifyTestCorrentness
+	Patient->>+TestRequestRecord: verifyCorrectness
+	TestRequestRecord-->>Patient: .
+	Patient-->>PatientHandler: .
+	PatientHandler-->>MzLab: .
+	MzLab->>LabHandler: getLabsWithFullSupportInfo
+	LabHandler->>Lab: supportTests
+	Loop
+		Lab->>LabTest: matches
+		LabTest-->>Lab: .
+	end
+	LabHandler->>Lab:getName
+	Lab-->>LabHandler: .
+	LabHandler->>FullTestInfo: setLabName
+	FullTestInfo-->>LabHandler: .
+	LabHandler->>FullTestInfo: setLabTestList
+	FullTestInfo-->>LabHandler: .
+	LabHandler->>Lab: getSupportedInsurancesNames
+	Lab->>InsuranceCompany: getCompanyName
+	InsuranceCompany-->>Lab: .
+	Lab-->>LabHandler: .
+	LabHandler->>FullTestInfo: setInsuranceCompanies
+	FullTestInfo-->>LabHandler: .
+	LabHandler-->>MzLab: .
+	MzLab-->>Interface: .
+
+	Interface->>+MzLab: setSelectedLabForTests
+	MzLab->>PatientHandler: setSelectedLabForTests
+	PatientHandler->>Patient: setSelectedLabForTests
+	Patient->>TestRequestRecord: setSelectedLabName
+	TestRequestRecord-->>Patient: .
+	Patient-->>PatientHandler: .
+	PatientHandler-->>MzLab: .
+	MzLab->>LabHandler: getFullTestInfo
+	LabHandler-->>MzLab: .
+	MzLab-->>Interface: .
+
+	Interface->>+MzLab: confirmTestInfo
+	MzLab->>PatientHandler: confirmTestRequest
+	PatientHandler->>Patient: confirmTestRequest
+	Patient->>TestRequestRecord: confirmRequest
+	TestRequestRecord-->>Patient: .
+	Patient-->>PatientHandler: .
+	PatientHandler-->>MzLab: .
+	MzLab->>LabHandler: findRecommendedTimes
+	LabHandler-->>MzLab: .
+	MzLab-->>Interface: .
+
+	Interface->>+MzLab: selectTimeForTest
+	MzLab->>PatientHandler: setTimeForTest
+	PatientHandler->>Patient: setTimeForTest
+	Patient->>TestRequestRecord: setPhlebotomistReferDate
+	TestRequestRecord-->>Patient: .
+	Patient-->>PatientHandler: .
+	PatientHandler-->>MzLab: .
+
+	MzLab->>LabHandler: assignPhlebotomistToTest
+	LabHandler->>+Lab: assignPhlebotomistToTest
+	Loop
+		Lab->>+Phlebotomist: getAmountOfWork
+		Phlebotomist->>PatientTestInfo: getWork
+		PatientTestInfo-->>Phlebotomist: .
+		Phlebotomist-->>Lab: .
+	end
+	Lab->>+Phlebotomist: getInfo
+	Phlebotomist-->>Lab: .
+	Lab->>PhlebotomistInfo: <<create>>
+	PhlebotomistInfo-->>Lab: .
+	Lab-->>LabHandler: .
+	LabHandler-->>MzLab: .
+	MzLab-->>Interface: .
+
+	Interface->>+MzLab: getReceipt
+	MzLab->>PatientHandler: getTestDescList
+	PatientHandler->>Patient: getTestDescList
+	Patient->>TestRequestRecord: getTestDescList
+	TestRequestRecord-->>Patient: .
+	Patient-->>PatientHandler: .
+	PatientHandler-->>MzLab: .
+	MzLab->>+LabHandler: getTestPrices
+	LabHandler->>+Lab: getTestPrices
+	Lab-->>LabHandler: .
+	LabHandler-->>MzLab: .
+	
+	MzLab->>+PatientHandler: getTotalPrice
+	PatientHandler->>Patient: getInsuranceCode
+	Patient-->>PatientHandler: .
+	PatientHandler->>InsuranceAPI: verifyCode
+	InsuranceAPI-->>PatientHandler: .
+	PatientHandler->>InsuranceAPI: getInsuranceCompanyRedcutionFactor
+	InsuranceAPI-->>PatientHandler: .
+	PatientHandler->>InsuranceAPI: SupportsLab
+	InsuranceAPI-->>PatientHandler: .
+
+	PatientHandler->>Patient: getTestTotalPrice
+	Patient->>+TestRequestRecord: getTestTotalPrice
+	TestRequestRecord->>ReceiptItem: <<create>>
+	ReceiptItem-->>TestRequestRecord: .
+	TestRequestRecord->>Receipt: addToReceipt
+	Receipt-->>TestRequestRecord: .
+	TestRequestRecord-->>Patient: .
+	Patient-->>PatientHandler: .
+	PatientHandler-->>MzLab: .
+	MzLab-->>Interface: .
+
+	Interface->>+MzLab: confirmPaymentReceipt
+	MzLab->>PatientHandler: confirmPaymentReceipt
+	PatientHandler->>PaymentRecipt: <<create>> 
+	PaymentRecipt->>+PatientHandler: .
+	PatientHandler->>BankAPI: verifyPayment
+	BankAPI->>+PatientHandler: .
+	PatientHandler-->>MzLab: .
+
+	MzLab->>+LabHandler: addTestToPhlebotomistSchedule
+	LabHandler-->>MzLab: .
+
+	MzLab->>+LabHandler: prepareKitForRequest
+	LabHandler->>Lab: prepareKit
+	Lab->>+LabRepository: prepareKit
+	LabRepository-->>Lab: .
+	Lab-->>LabHandler: .
+	LabHandler-->>MzLab: .
+
+	MzLab-->>Interface: .
