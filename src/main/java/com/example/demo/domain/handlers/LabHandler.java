@@ -37,8 +37,8 @@ public class LabHandler {
 
 //        lab tests
 
-        TestDesc testDesc1 = new TestDesc("test1", 1, false, true, "nothing", "nothing");
-        TestDesc testDesc2 = new TestDesc("test2", 2, false, true, "nothing", "nothing");
+        TestDesc testDesc1 = new TestDesc("test1", 1, true, true, "nothing", "nothing");
+        TestDesc testDesc2 = new TestDesc("test2", 2, true, true, "nothing", "nothing");
         TestDesc testDesc3 = new TestDesc("test3", 3, false, true, "nothing", "nothing");
         TestDesc testDesc4 = new TestDesc("test4", 2, false, true, "nothing", "nothing");
 

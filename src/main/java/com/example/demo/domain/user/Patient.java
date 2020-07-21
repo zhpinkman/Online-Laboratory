@@ -33,7 +33,7 @@ public class Patient extends User {
         TestDesc testDesc3 = new TestDesc("test3", 3, false, true, "nothing", "nothing");
         TestDesc testDesc4 = new TestDesc("test4", 2, false, true, "nothing", "nothing");
 
-        List<TestDesc> testDescList = new ArrayList<TestDesc>(Arrays.asList(testDesc3, testDesc4));
+        List<TestDesc> testDescList = new ArrayList<TestDesc>(Arrays.asList(testDesc3));
 
         prescriptions.add(new Prescription("kshLkBS", "prescription", testDescList, PrescriptionStatus.REVIEWED));
     }

@@ -108,7 +108,7 @@ public class TestRequestRecord {
         }
         for (TestDesc testDesc: testDescList) {
             if (testDesc.getNeedsPrescription()) {
-                if (!attachedPrescription.prescriptionIncludes(testDesc) || attachedPrescription == null) {
+                if (attachedPrescription == null || !attachedPrescription.prescriptionIncludes(testDesc)) {
                     throw new Exception("test needs prescription but have not attached");
                 }
             }

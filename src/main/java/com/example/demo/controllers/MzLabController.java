@@ -50,7 +50,6 @@ public class MzLabController {
             MzLab.getInstance().setPatientTests(testNames);
             return "OK";
         } catch (Exception e) {
-            e.printStackTrace();
             response.sendError(HttpStatus.BAD_REQUEST.value(), e.getMessage());
         }
         return null;
