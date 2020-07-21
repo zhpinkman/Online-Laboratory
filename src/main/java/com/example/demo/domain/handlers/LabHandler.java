@@ -13,12 +13,16 @@ public class LabHandler {
     private List<Lab> labList = new ArrayList<>();
 
     public LabHandler() {
-        Lab lab1 = new Lab("lab", new Address(100, 200, "baqalia"));
+        Lab lab1 = new Lab("lab1", new Address(100, 200, "baqalia"));
+        Lab lab2 = new Lab("lab2", new Address(200, 300, "baqalia2"));
 
 //        lab repository
 
         LabRepository labRepository1 = new LabRepository("repo", "LDfaLk");
         lab1.setLabRepositories(labRepository1);
+
+        LabRepository labRepository2 = new LabRepository("repo2", "LDfaLk2");
+        lab1.setLabRepositories(labRepository2);
 
 //        insuranceCompany
 
@@ -37,9 +41,11 @@ public class LabHandler {
         LabTest labTest3 = new LabTest(4000, testDesc3);
         LabTest labTest4 = new LabTest(4000, testDesc4);
 
-        List<LabTest> labTestList = new ArrayList<LabTest>(Arrays.asList(labTest1, labTest2, labTest3, labTest4));
-
+//        List<LabTest> labTestList = new ArrayList<LabTest>(Arrays.asList(labTest1, labTest2, labTest3, labTest4));
+        List<LabTest> labTestList = new ArrayList<LabTest>(Arrays.asList(labTest1, labTest2, labTest3));
         lab1.setLabTests(labTestList);
+        List<LabTest> labTestList2 = new ArrayList<LabTest>(Arrays.asList(labTest2, labTest3, labTest4));
+        lab2.setLabTests(labTestList2);
 
 
 //        phlebotomists
