@@ -9,6 +9,12 @@ public class InsuranceAPI {
     private static List<InsuranceCompany> insuranceCompanyList = new ArrayList<>(
             Arrays.asList(new InsuranceCompany("bime", 80)));
 
+    private static List<LabInsuranceInfo> labInsuranceInfoList = new ArrayList<>();
+
+    public static void addLabInfo(LabInsuranceInfo labInsuranceInfo) {
+        labInsuranceInfoList.add(labInsuranceInfo);
+    }
+
 
     public static boolean verifyCode(String code) {
         if (code == null) {
@@ -28,8 +34,22 @@ public class InsuranceAPI {
         return 0;
     }
 
-    public static boolean SupportsLab(String selectedLabName, String insuranceCompany) {
-        System.out.println("");
-        return true;
+    private static LabInsuranceInfo getLabInfo(String labName) throws Exception {
+        for (LabInsuranceInfo labInsuranceInfo: labInsuranceInfoList) {
+            if (labInsuranceInfo.getLabName().equals(labName)) {
+                return labInsuranceInfo;
+            }
+        }
+        throw new Exception("no such lab registered!!");
+    }
+
+    public static boolean SupportsLab(String selectedLabName, String insuranceCompany) throws Exception {
+        LabInsuranceInfo labInsuranceInfo = getLabInfo(selectedLabName);
+        for (String insuranceName: labInsuranceInfo.getSupportedInsurances()) {
+            if (insuranceName.equals(insuranceCompany)) {
+                return true;
+            }
+        }
+        return false;
     }
 }

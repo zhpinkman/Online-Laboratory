@@ -1,6 +1,8 @@
 package com.example.demo.domain.handlers;
 
+import com.example.demo.domain.externalAPIs.InsuranceAPI;
 import com.example.demo.domain.externalAPIs.InsuranceCompany;
+import com.example.demo.domain.externalAPIs.LabInsuranceInfo;
 import com.example.demo.domain.lab.*;
 import com.example.demo.domain.utility.Address;
 import com.example.demo.domain.utility.FullTestInfo;
@@ -28,7 +30,9 @@ public class LabHandler {
 
         List<InsuranceCompany> insuranceCompanies = new ArrayList<InsuranceCompany>(Arrays.asList(new InsuranceCompany("bime", 80)));
         lab1.setSupportedInsurances(insuranceCompanies);
+        InsuranceAPI.addLabInfo(new LabInsuranceInfo(lab1.getName(), new ArrayList<>(Arrays.asList("bime"))));
         lab2.setSupportedInsurances(insuranceCompanies);
+        InsuranceAPI.addLabInfo(new LabInsuranceInfo(lab2.getName(), new ArrayList<>()));
 
 //        lab tests
 
@@ -55,6 +59,7 @@ public class LabHandler {
                 new Phlebotomist("phle", "phle", "mohsen.fayyaz77@gmail.com", "temp", "hdAni")));
 
         lab1.setPhlebotomistList(phlebotomistList);
+        lab2.setPhlebotomistList(new ArrayList<>());
 
         labList.add(lab1);
         labList.add(lab2);
