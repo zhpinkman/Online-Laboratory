@@ -118,7 +118,7 @@ public class TestRequestRecord {
 
     public void confirmRequest() throws Exception {
         if (!testRequestRecordStatus.equals(TestRequestRecordStatus.LAB_SELECTED)) {
-            throw new Exception("incorrect order! first you should select lab for your tests");
+            throw new Exception("incorrect order!");
         }
         testRequestRecordStatus = TestRequestRecordStatus.INFO_CONFIRMED;
         System.out.println("test's info have been confirmed");

@@ -136,6 +136,10 @@ public class MzLabController {
             dateIndexString = dateIndexString.substring(dateIndexString.indexOf("=") + 1);
             Date date = savedDates.get(Integer.valueOf(dateIndexString));
             return MzLab.getInstance().selectTimeForTest(date);
+        } catch (NumberFormatException e) {
+            response.sendError(HttpStatus.BAD_REQUEST.value(), "Please enter an integer");
+        }catch (IndexOutOfBoundsException e){
+            response.sendError(HttpStatus.BAD_REQUEST.value(), "Please enter a valid number. this time does not exist");
         } catch (Exception e) {
             response.sendError(HttpStatus.BAD_REQUEST.value(), e.getMessage());
         }
