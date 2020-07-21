@@ -30,7 +30,8 @@ public class LabHandler {
 
         List<InsuranceCompany> insuranceCompanies = new ArrayList<InsuranceCompany>(Arrays.asList(new InsuranceCompany("bime", 80)));
         lab1.setSupportedInsurances(insuranceCompanies);
-        InsuranceAPI.addLabInfo(new LabInsuranceInfo(lab1.getName(), new ArrayList<>(Arrays.asList("bime"))));
+        InsuranceAPI.addLabInfo(new LabInsuranceInfo(lab1.getName(), new ArrayList<>()));
+//        InsuranceAPI.addLabInfo(new LabInsuranceInfo(lab1.getName(), new ArrayList<>(Arrays.asList("bime"))));
         lab2.setSupportedInsurances(insuranceCompanies);
         InsuranceAPI.addLabInfo(new LabInsuranceInfo(lab2.getName(), new ArrayList<>()));
 
