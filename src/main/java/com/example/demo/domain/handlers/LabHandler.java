@@ -28,6 +28,7 @@ public class LabHandler {
 
         List<InsuranceCompany> insuranceCompanies = new ArrayList<InsuranceCompany>(Arrays.asList(new InsuranceCompany("bime", 80)));
         lab1.setSupportedInsurances(insuranceCompanies);
+        lab2.setSupportedInsurances(insuranceCompanies);
 
 //        lab tests
 
@@ -56,6 +57,7 @@ public class LabHandler {
         lab1.setPhlebotomistList(phlebotomistList);
 
         labList.add(lab1);
+        labList.add(lab2);
     }
 
     public Lab getLab(String labName) throws Exception {
