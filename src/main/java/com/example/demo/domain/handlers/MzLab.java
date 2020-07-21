@@ -103,6 +103,11 @@ public class MzLab {
 
 
     public FullTestInfo setSelectedLabForTests(String labName) throws Exception {
+        try {
+            labHandler.getLab(labName);
+        } catch (Exception e){
+            throw e;
+        }
         patientHandler.setSelectedLabForTests(patientEmail, labName);
         List<LabTest> labTestList = labHandler.getLabTests(labName, patientHandler.getTestDescList(patientEmail));
         return labHandler.getFullTestInfo(labName, labTestList);
