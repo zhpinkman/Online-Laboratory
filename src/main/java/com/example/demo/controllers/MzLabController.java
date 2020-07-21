@@ -73,6 +73,10 @@ public class MzLabController {
             Address address = MzLab.getInstance().getPatientAddresses().get(Integer.valueOf(addressIndexString));
             MzLab.getInstance().setPatientTestAddress(address);
             return "OK";
+        } catch (NumberFormatException e) {
+            response.sendError(HttpStatus.BAD_REQUEST.value(), "Please enter an integer");
+        }catch (IndexOutOfBoundsException e){
+            response.sendError(HttpStatus.BAD_REQUEST.value(), "Please enter a valid number. this address does not exist");
         } catch (Exception e) {
             response.sendError(HttpStatus.BAD_REQUEST.value(), e.getMessage());
             e.printStackTrace();
