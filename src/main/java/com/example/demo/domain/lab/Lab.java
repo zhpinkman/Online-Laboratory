@@ -106,8 +106,7 @@ public class Lab {
         }
         return new PhlebotomistInfo(lessOccupiedPhlebotomist.getName(), lessOccupiedPhlebotomist.getInfo(), name);
     }
-
-
+    
     public List<String> getSupportedInsurancesNames() {
         List<String> insuranceCompanyNames = new ArrayList<>();
         for (InsuranceCompany insuranceCompany: supportedInsurances) {
